@@ -1,0 +1,248 @@
+<!-- Define a quantidade de colunas para a lista de produtos e espaçamento entre elas -->
+<iluria.if.product.thumb.size.is.small>
+    <script> 
+        <iluria.if.category.position.is.vertical>
+            var columns = 3; 
+            var masonryMargin = 20;
+        </iluria.if.category.position.is.vertical>
+        <iluria.if.category.position.is.horizontal>
+            var columns = 4;
+            var masonryMargin = 15;
+        </iluria.if.category.position.is.horizontal>
+            
+    </script>
+</iluria.if.product.thumb.size.is.small>
+<iluria.if.product.thumb.size.is.medium>
+    <script> 
+        var columns = 3; 
+        var masonryMargin = 24;
+    </script>
+</iluria.if.product.thumb.size.is.medium>
+
+
+<iluria.if.product.thumb.size.is.fixed>
+<!-- A margem direita da última coluna de produtos é ajustada para zero -->
+    <script>
+        function adjustProductThumbContainerMargin() {
+            $(".bestsellers-product-list-container .product-item-container").each(function(i) {
+                if((i+1) % columns == 0)
+                    $(this).css("margin-right", "0px");
+            });
+            
+            $(".product-item-container").not('.bestsellers-product-list-container .product-item-container').each(function(i) {
+                if((i+1) % columns == 0)
+                    $(this).css("margin-right", "0px");
+            });
+        }
+        $(function(){ adjustProductThumbContainerMargin(); });
+    </script>
+    
+    
+    <script>
+        function adjustThumbContainerHeight() {
+        	
+        	var maxHeight=0;
+            
+        	$(".product-item-container").height(""); // "reseta" o tamanho de todas as thumbs
+        	
+        	 
+        	
+        	$(".product-item-container").each(function(i) {
+            	maxHeight = Math.max(maxHeight, $(this).height()); 
+            }).height(maxHeight);
+        }
+        $(function(){ 
+        	adjustThumbContainerHeight(); 
+
+    		$(".thumb-stamp").bind('mouseenter', function() { 
+    			$(this).closest(".product-thumb-container").find(".product-thumb-image-container .iluria-product-thumb").mouseenter();
+    		});
+
+    		$(".thumb-stamp").bind('mouseleave', function() { 
+    			$(this).closest(".product-thumb-container").find(".product-thumb-image-container .iluria-product-thumb").mouseleave();
+    		});
+
+        });
+    </script>
+</iluria.if.product.thumb.size.is.fixed>
+
+<iluria.if.product.thumb.size.is.free>
+	<script>
+
+		$(function(){ 
+			$(".thumb-stamp").bind('mouseenter', function() { 
+				$(this).closest(".product-thumb-container").find(".product-thumb-image-container .iluria-product-thumb-img").mouseenter();
+			});
+
+			$(".thumb-stamp").bind('mouseleave', function() { 
+				$(this).closest(".product-thumb-container").find(".product-thumb-image-container .iluria-product-thumb-img").mouseleave();
+			});
+		});
+
+	</script>
+</iluria.if.product.thumb.size.is.free>
+
+<iluria.if.product.thumb.size.is.square>  
+	<script>
+	 function adjustThumbImageSquareHeight() {
+         
+     	$(".iluria-product-thumb").height( $(".iluria-product-thumb").width()+1 ); // "reseta" o tamanho de todas as thumbs
+
+     }
+	 $(function(){ adjustThumbImageSquareHeight(); });
+	</script>
+</iluria.if.product.thumb.size.is.square> 
+
+<!-- Se o layout tem thumb com tamanho livre, usa o plugin Masonry -->
+<iluria.if.product.thumb.size.is.free>
+    <script src="$iluria.template-assets-url/jquery.masonry.min.js"></script>
+    <script>
+        function updateMasonry(newElements)
+        {
+            $('#product-list-container').masonry( 'appended', newElements, true );
+            
+        }
+        $(function(){
+            $('#product-list-container').masonry({
+                itemSelector : '.product-item-container',
+                gutterWidth : masonryMargin
+            });
+        });
+    </script>
+</iluria.if.product.thumb.size.is.free>
+
+<!-- Animação quando o usuário passa o mouse sobre as thumbs (fadein e fadeout) -->
+<script>
+    
+    
+    function animateThumbs(elements) {
+        $(elements).hover(function(){
+            
+            $(this).children(".product-item-container-inner").children("a").children(".product-thumb-container").children(".product-thumb-zoom-icon").show();
+            $(this).children(".product-item-container-inner").children("a").children(".product-thumb-container").children(".product-thumb-zoom-icon").animate({ opacity: 1 }, 300);
+        }, 
+                          function()
+                          {
+                              
+                              $(this).children(".product-item-container-inner").children("a").children(".product-thumb-container").children(".product-thumb-zoom-icon").hide();
+                              $(this).children(".product-item-container-inner").children("a").children(".product-thumb-container").children(".product-thumb-zoom-icon").animate({ opacity: 0 }, 200);
+                          });
+    }
+    $(function() {
+        animateThumbs($("#product-list-container").children(".product-item-container"));
+    });
+</script>
+
+<!-- Paginação infinita -->
+<iluria.if.infinite.scroll.is.enabled>
+    <script src="$iluria.template-assets-url/jquery.infinitescroll.min.js"></script>
+    <script>
+        $(function(){
+            $(".iluria-pagination").hide();
+            $("#product-list-container").infinitescroll({
+                navSelector      : ".iluria-pagination",
+                nextSelector     : ".iluria-pagination-next a:first",
+                itemSelector     : ".product-item-container",
+                bufferPx         : 200,
+                pathParse        : function(path) {
+
+                	var argMatches = path.match("[?&]pageNum=");
+                	var token = argMatches[0];
+                	
+                    var i = path.indexOf(token);
+                    i = i + token.length;
+                    
+                	var pageValueMatches = path.match("[?&]pageNum=[0-9]{1,}");
+                	var strPageId = pageValueMatches[0].match("[0-9]{1,}");
+                	var pageId = parseInt(strPageId)-1;
+                	
+                    var part1 = path.substring(0,i);
+                    var part2 = path.substring(i+strPageId.length);
+                	
+                    var result = [part1, part2];
+                    this.state.currPage = pageId;
+                    return result;
+                	
+                },
+                loading            : {
+                    img                : "$iluria.template-assets-url/spinner-3.gif",
+                    finishedMsg        : "Não há mais produtos para carregar",
+                    msgText            : "Carregando mais produtos..."
+                }
+            }, function( newElements ) {
+                if(typeof adjustProductThumbContainerMargin == "function") 
+                    adjustProductThumbContainerMargin();
+                if(typeof updateMasonry == "function") 
+                    updateMasonry($(newElements));
+                if(typeof animateThumbs == "function") 
+                    animateThumbs($(newElements));
+                if(typeof adjustThumbContainerHeight == "function")
+                	adjustThumbContainerHeight();
+                if(typeof adjustThumbImageSquareHeight == "function")
+                	adjustThumbImageSquareHeight();
+                
+                /* Pré-carrega a segunda thumb de cada produto */
+                $(newElements).each(function() { 
+                    var secondThumbUrl = $(this).find(".iluria-product-thumb-img").attr("data-second-image"); 
+                    if(secondThumbUrl != undefined && secondThumbUrl != "")
+                        (new Image()).src = secondThumbUrl;
+                });
+                
+                /* Associa o mouse hover para mostrar a segunda thumb, para layout com thumb de tamanho livre */
+                if(typeof freeSizeThumbMouseOver == "function") {
+                    $(".iluria-product-thumb-img").unbind('mouseenter mouseleave');
+                    $(".iluria-product-thumb-img").bind('mouseenter', function() { freeSizeThumbMouseOver($(this)); });
+                    $(".iluria-product-thumb-img").bind('mouseleave', function() { freeSizeThumbMouseOut($(this)); });
+                }
+                
+                if(typeof thumbMouseOver == "function") {
+                    /* Associa o mouse hover para mostrar a segunda thumb, para layout com thumb de tamanho fixo */
+                    $(".iluria-product-thumb").unbind('mouseenter mouseleave');
+                    $(".iluria-product-thumb").bind('mouseenter', function() { thumbMouseOver($(this)); });
+                    $(".iluria-product-thumb").bind('mouseleave', function() { thumbMouseOut($(this)); });
+                }
+            });
+        });
+    </script>
+</iluria.if.infinite.scroll.is.enabled>
+
+<!-- Zoom na foto do produto -->
+<iluria.v2.if.thumb.zoom.is.enabled>
+    <script>
+        function zoomProductThumb(zoomImage, productUrl) {
+            $.fancybox.open({ href : zoomImage }, { 
+                modal : false,
+                closeBtn : false,
+                openEffect : "none",
+                closeEffect : "none",
+                padding: 0,
+                helpers : {
+                    overlay : {
+                        closeClick : true,
+                        locked : false,
+                        speedOut : 0,
+                        css : {
+                            'z-index' : '10000'
+                        }
+                    }
+                },
+                afterShow : function() { 
+                    $(".fancybox-wrap").css("z-index", "20000");
+                    $(".fancybox-wrap").prepend("<div class='fancybox-custom-buttons-container'><div class='fancybox-custom-buttons-container-wrapper'><div class='fancybox-buy-button'>Detalhes</div><div class='fancybox-close-button'>Fechar</div></div></div>");
+                    $(".fancybox-buy-button").click(function() {
+                        document.location = productUrl;
+                    });
+                    $(".fancybox-close-button").click(function() {
+                        $.fancybox.close();
+                    });
+                    $(".fancybox-outer").click(function() {
+                        $.fancybox.close();
+                    });
+                    $(".fancybox-outer").css("cursor", "hand");
+                    $(".fancybox-outer").css("cursor", "pointer");
+                }
+            });
+            return false;
+        }
+    </script>
+</iluria.v2.if.thumb.zoom.is.enabled>

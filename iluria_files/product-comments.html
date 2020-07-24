@@ -1,0 +1,125 @@
+<iluria.if.product.comments.fb.enabled>
+    <div style="margin-top: 30px">
+        <div class="fb-comments" data-href="$iluria.product.fb.og.url" data-num-posts="5" colorscheme="$iluria.facebook.widget.color"></div>
+    </div>
+</iluria.if.product.comments.fb.enabled>
+
+<iluria.if.product.comments.enabled>
+    <script type='text/JavaScript' src='$iluria.template-assets-url/jquery.maxlength-min.js'></script>
+    <div style="clear: both; padding-top: 5px;">
+        <div class="sub-header iluria-round-corner iluria-layout-product-section-title iluria-layout-product-section-background">
+            Comentários
+        </div>
+        <iluria.show.product.comments>
+            <div class="iluria-product-comment-container">
+                <table width="100%" cellpadding="0" cellspacing="0">
+                    <tr valign="top">
+                        <td style="padding-right: 10px; width: 40px">
+                            <iluria.if.sender.has.external.profile>
+                                <a href="$iluria.product.comment.sender.profile.url" target="_blank">
+                                    <img src="$iluria.product.comment.sender.profile.picture.url" width="40" height="40" style="padding-top: 5px" border="0">
+                                </a>
+                            </iluria.if.sender.has.external.profile>
+                            <iluria.if.sender.has.not.external.profile>
+                                <img src="$iluria.product.comment.sender.profile.picture.url" width="40" height="40" style="padding-top: 5px" border="0">
+                            </iluria.if.sender.has.not.external.profile>
+                        </td>
+                        <td>
+                            <div class="iluria-product-comment-user-name">
+                                <iluria.if.sender.has.external.profile>
+                                    <a href="$iluria.product.comment.sender.profile.url" target="_blank">
+                                        $iluria.product.comment.sender.name
+                                    </a>
+                                </iluria.if.sender.has.external.profile>
+                                <iluria.if.sender.has.not.external.profile>
+                                    $iluria.product.comment.sender.name
+                                </iluria.if.sender.has.not.external.profile>
+                            </div>
+                            <div class="iluria-product-comment-date">
+                                $iluria.product.comment.date
+                                <iluria.if.product.comment.source.is.flickr>
+                                    via Flickr
+                                </iluria.if.product.comment.source.is.flickr>
+                            </div>
+                            <div class="iluria-product-comment-user-comment">
+                                $iluria.product.comment
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </iluria.show.product.comments>
+    </div>
+    <table width="100%" cellpadding="0" cellspacing="0">
+        <tr valign="top">
+            <td style="padding-right: 10px; width: 40px">
+                <img src="$iluria.client.picture.url" width="40" height="40" style="padding-top: 1px" border="0">
+            </td>
+            <td>
+                <form id="iluria-client-comment-form">
+                    <input type="hidden" name="productId" value="$iluria.product.id">
+                    <textarea id="comment" name="comment" readonly=""
+                    style="width: 852px; height: 90px; border: 1px #CCC solid">Escreva aqui seu comentário...</textarea>
+                </form>
+                <iluria.if.client.not.logged>
+                    <script>
+                        $("#comment").attr("disabled", true);
+                    </script>
+                    <div class="comment-login">
+                        Quer comentar este produto?
+                        <a href="javascript: Iluria.showLoginSSLForm();">Entre</a>
+                        ou <a href="javascript: Iluria.showLoginSSLForm();">cadastre-se</a> em nossa loja.
+                    </div>
+                </iluria.if.client.not.logged>
+                <iluria.if.client.is.logged>
+                    <div class="button comment-button" onclick="saveComment()">
+                        Enviar comentário
+                    </div>
+                </iluria.if.client.is.logged>
+            </td>
+        </tr>
+    </table>
+    <iluria.if.client.is.logged>
+        <script>
+            $('#comment').focus(
+                function()
+                {
+                    if ($('#comment').attr("readonly") == true || $('#comment').attr("readonly") == "readonly")
+                    {
+                        $('#comment').removeAttr("readonly");
+                        $('#comment').val('');
+                        $('#comment').text('');
+                        $('#comment').focus();
+                    }
+                });
+        </script>
+    </iluria.if.client.is.logged>
+    <div style="clear: both"></div>
+    
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#comment').maxlength({
+                maxCharacters: 1000,
+                status: false,
+                notificationClass: "iluria-product-comment-max-length-nofitication",
+                showAlert: false
+            });
+        });
+    </script>
+    <script>
+        var saveCommentMessage = "Seu comentário foi enviado e está aguardando aprovação para ser publicado.";
+        
+        function saveComment() {
+            Iluria.readClientProductComment('#iluria-client-comment-form', saveCommentCallback);
+        }
+        
+        function saveCommentCallback() {
+            alert(saveCommentMessage);
+            window.location.reload();
+        }
+    </script>
+    <script>
+        $("#comment").val("Escreva aqui seu comentário...");
+    </script>
+    
+</iluria.if.product.comments.enabled>

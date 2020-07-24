@@ -1,0 +1,34 @@
+<!-- Informações gerais do produto -->
+ <div style="margin-top: 20px" class="product-description">
+     <iluria.if.product.has.shipping.time>
+         <div class="iluria-shipping-time-container">
+             &bull; Prazo para postagem:
+             <span id="iluria-product-shipping-time"></span>
+         </div>
+         <script>
+             if($iluria.product.shipping.time == 1)
+                 $("#iluria-product-shipping-time").text("$iluria.product.shipping.time dia útil");
+             else if($iluria.product.shipping.time == 0)
+                 $("#iluria-product-shipping-time").text("mesmo dia");
+             else
+                 $("#iluria-product-shipping-time").text("$iluria.product.shipping.time dias úteis");
+         </script>
+     </iluria.if.product.has.shipping.time>
+     
+     <iluria.if.product.info.is.enabled>
+         &bull; Código do produto: $iluria.product.id <br>
+         <iluria.if.product.is.not.soldout>
+             <span id="product-minimum-quantity">&bull; Quantidade mínima: $iluria.product.minimum.quantity<br></span>
+             <script> if($iluria.product.minimum.quantity > 1) $("#product-minimum-quantity").show(); </script>
+             <iluria.if.product.is.made.to.order>
+                 &bull; Disponibilidade: produto feito sob encomenda <br>
+                 <iluria.if.product.price.is.not.on.request>
+                 	&bull; Pagamento no momento do pedido: $iluria.product.made.to.order.payment% de sinal <br>
+                 </iluria.if.product.price.is.not.on.request>
+             </iluria.if.product.is.made.to.order>
+             <iluria.if.product.shipping.is.free>
+                 &bull; Frete: grátis <br>
+             </iluria.if.product.shipping.is.free>
+         </iluria.if.product.is.not.soldout>
+     </iluria.if.product.info.is.enabled>
+ </div>

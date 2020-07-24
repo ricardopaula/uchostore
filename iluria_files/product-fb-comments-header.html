@@ -1,0 +1,34 @@
+<iluria.if.product.comments.fb.enabled>
+    <div id="fb-root"></div>
+    <script>    
+        function onFacebookInit() {
+            FB.Event.subscribe('comment.create', function(response) {
+                var commentId = response.commentID;
+                var productUrl = response.href;
+                $.get("/facebookComment.do?command=readSocialComment&productId=$iluria.product.id&commentId=" 
+                      + commentId + "&productUrl=" + encodeURIComponent(productUrl));
+            });
+        }
+        
+        window.fbAsyncInit = function() { 
+            FB.init({
+                appId : '$iluria.fb.comment.app.id',
+                status : true,
+                xfbml : true
+            });
+            
+            $(function() {
+                if(typeof onFacebookInit != "undefined")
+                    onFacebookInit();                    
+            });
+        };
+        
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1&appId=$iluria.fb.comment.app.id";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+</iluria.if.product.comments.fb.enabled>

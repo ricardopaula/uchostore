@@ -1,0 +1,42 @@
+<iluria.include>head-begin.html</iluria.include>
+<title>$iluria.shop.name</title>
+<iluria.include>head-end.html</iluria.include>
+<iluria.include>body-begin.html</iluria.include>
+
+<div class="cart-container">
+    
+    <iluria.cart.client.info.final/>
+    
+</div>
+
+
+<style>
+    #background-spinner {
+        background-color: rgba(0,0,0,0.7);
+        display: none;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        position: fixed;
+    }
+</style>
+
+<script>
+    $(function() {
+        $('body').append(
+            '<div id="background-spinner"><center><img id="spinner" src="$iluria.template-assets-url/spinner-8.gif"></center></div>');
+            var spinnerHeight = ($(window).height() / 2) - $('#spinner').height();
+            $('#spinner').css('margin-top', spinnerHeight);
+    });
+    function showSpinner() {
+        $('#background-spinner').show();
+    }
+    function hideSpinner() {
+        $('#background-spinner').hide();
+    }
+</script>
+
+
+<iluria.include>body-end.html</iluria.include>
+

@@ -1,0 +1,67 @@
+	<div id="header" class="header-internal" align="right">
+		<table cellpadding=0 cellspacing=0 width="100%">
+			<tr valign="middle">
+				<td align="left" width="100%">
+					&nbsp;
+			    </td>
+			    <iluria.if.testimonials.button.position.is.header>
+				    	<td align="right">
+				            <nobr> <div class="iluria-layout-menu"><a href="testimonials.html">
+				            	<iluria.v2.if.shop.has.testimonial.button>
+				            		<img src="$iluria.v2.shop.testimonial.button.url" border=0>
+				            	</iluria.v2.if.shop.has.testimonial.button>
+				            	<iluria.v2.if.shop.has.not.testimonial.button>
+				            		Depoimentos
+				            	</iluria.v2.if.shop.has.not.testimonial.button>
+				            </a></div></nobr>
+					    </td>
+				    </iluria.if.testimonials.button.position.is.header>
+				    <iluria.if.contact.button.position.is.header>
+				    	<td align="right">
+				             <nobr> <div class="iluria-layout-menu"> <a href="contact.html">
+				             	<iluria.v2.if.shop.has.contact.button>
+				            		<img src="$iluria.v2.shop.contact.button.url" border=0>
+				            	</iluria.v2.if.shop.has.contact.button>
+				             	<iluria.v2.if.shop.has.not.contact.button>
+				            		$iluria.custom.contact.title
+				            	</iluria.v2.if.shop.has.not.contact.button>
+				             </a></div></nobr>
+					    </td>
+				    </iluria.if.contact.button.position.is.header>
+			    
+			    <td align="right">
+		            <!-- Minha conta -->
+		            <nobr><iluria.include>my-account-button.html</iluria.include></nobr>
+			    </td>
+			    <td align="right">
+		            <!-- Carrinho de compras -->
+		            <nobr><iluria.include>cart-button.html</iluria.include></nobr>
+				</td>
+			</tr>
+		</table>
+		<table cellpadding=0 cellspacing=0 width="100%" style="margin-top: 20px">
+			<tr valign="middle">
+				<td align="left" width="100%">
+					&nbsp;
+			    </td>
+				<td>
+		            <!-- Mensagem 'Olá visitante' -->
+		            <nobr><iluria.include>hello-client-message.html</iluria.include></nobr>
+	            </td>
+	            <td align="right">
+		            <!-- Login -->
+		            <nobr><iluria.include>login-button.html</iluria.include></nobr>
+			    </td>
+				<td align="right">
+			        <!-- Campo de busca -->
+			        <nobr><iluria.include>search-bar.html</iluria.include></nobr>
+			    </td>
+			</tr>
+		</table>
+	</div>
+	<style>
+		#shop-logo img { max-width: 425px !important; }
+		.hello-client-message { margin-right: 10px; }
+		.search-bar input { width: 178px; }
+		.logout-button { margin-right: 10px !important; }
+	</style>

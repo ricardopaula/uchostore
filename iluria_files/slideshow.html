@@ -1,0 +1,97 @@
+<iluria.if.slideshow.is.enabled>
+    <link rel="stylesheet" href="$iluria.template-assets-url/jquery.nivo.slider.3.2/themes/default/default.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="$iluria.template-assets-url/jquery.nivo.slider.3.2/nivo-slider.css" type="text/css" media="screen" />
+    <script src="$iluria.template-assets-url/jquery.nivo.slider.3.2/jquery.nivo.slider.pack.js" type="text/javascript"></script>
+    <style>
+        .theme-default .nivoSlider { box-shadow: none; }
+        .theme-default .nivo-controlNav { padding: 10px 0px 0px 0px; }
+        .theme-default .nivoSlider {
+            position:relative;
+            background:url('$iluria.template-assets-url/spinner-5.gif') no-repeat 50% 50%;
+            min-height: 100px;
+        }
+        .theme-default .nivoSlider img {
+            position:absolute;
+            top:0px;
+            left:0px;
+            display:none;
+        }
+        .theme-default .nivoSlider a {
+            border:0;
+            display:block;
+        }
+        .slider-wrapper {
+            position: relative;
+            margin: 0px 0px 20px 0px;
+        }
+        .nivo-controlNav {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            z-index: 10000;
+        }
+        #slider { display: block; margin: 0px; padding: 0px; }
+    </style>
+    <div class="slider-wrapper theme-default top-image">
+        <div id="slider" class="nivoSlider">
+            <iluria.if.v2.slideshow.has.image1>
+                <iluria.if.v2.slideshow.image1.has.link>
+                    <a href="$iluria.v2.slideshow.image1.link" target="$iluria.v2.slideshow.image1.target.link"><img src="$iluria.v2.slideshow.image1.url" border=0/></a>
+                </iluria.if.v2.slideshow.image1.has.link>            
+                <iluria.if.v2.slideshow.image1.has.not.link>
+                    <img src="$iluria.v2.slideshow.image1.url" />
+                </iluria.if.v2.slideshow.image1.has.not.link>
+            </iluria.if.v2.slideshow.has.image1>
+            
+            <iluria.if.v2.slideshow.has.image2>
+                <iluria.if.v2.slideshow.image2.has.link>
+                    <a href="$iluria.v2.slideshow.image2.link" target="$iluria.v2.slideshow.image2.target.link"><img src="$iluria.v2.slideshow.image2.url" border=0/></a>
+                </iluria.if.v2.slideshow.image2.has.link>           
+                <iluria.if.v2.slideshow.image2.has.not.link>
+                    <img src="$iluria.v2.slideshow.image2.url" />
+                </iluria.if.v2.slideshow.image2.has.not.link>
+            </iluria.if.v2.slideshow.has.image2>
+            
+            <iluria.if.v2.slideshow.has.image3>
+                <iluria.if.v2.slideshow.image3.has.link>
+                    <a href="$iluria.v2.slideshow.image3.link" target="$iluria.v2.slideshow.image3.target.link"><img src="$iluria.v2.slideshow.image3.url" border=0/></a>
+                </iluria.if.v2.slideshow.image3.has.link>           
+                <iluria.if.v2.slideshow.image3.has.not.link>
+                    <img src="$iluria.v2.slideshow.image3.url" />
+                </iluria.if.v2.slideshow.image3.has.not.link>
+            </iluria.if.v2.slideshow.has.image3>
+            
+            <iluria.if.v2.slideshow.has.image4>
+                <iluria.if.v2.slideshow.image4.has.link>
+                    <a href="$iluria.v2.slideshow.image4.link" target="$iluria.v2.slideshow.image4.target.link"><img src="$iluria.v2.slideshow.image4.url" border=0/></a>
+                </iluria.if.v2.slideshow.image4.has.link>           
+                <iluria.if.v2.slideshow.image4.has.not.link>
+                    <img src="$iluria.v2.slideshow.image4.url" />
+                </iluria.if.v2.slideshow.image4.has.not.link>
+            </iluria.if.v2.slideshow.has.image4>
+            
+            <iluria.if.v2.slideshow.has.image5>
+                <iluria.if.v2.slideshow.image5.has.link>
+                    <a href="$iluria.v2.slideshow.image5.link" target="$iluria.v2.slideshow.image5.target.link"><img src="$iluria.v2.slideshow.image5.url" border=0/></a>
+                </iluria.if.v2.slideshow.image5.has.link>           
+                <iluria.if.v2.slideshow.image5.has.not.link>
+                    <img src="$iluria.v2.slideshow.image5.url" />
+                </iluria.if.v2.slideshow.image5.has.not.link>
+            </iluria.if.v2.slideshow.has.image5>
+        </div>
+    </div>
+    
+    <script type="text/javascript">
+        $(window).load(function() {
+            $('#slider').nivoSlider({
+                effect: '$iluria.slideshow.effect', // Specify sets like: 'fold,fade,sliceDown'
+                pauseTime: ($iluria.slideshow.time * 1000), // How long each slide will show
+                prevText: 'Anterior', // Prev directionNav text
+                nextText: 'Próximo', // Next directionNav text
+                afterLoad: function() {
+                    $(".theme-default .nivoSlider").css("background-image", "none");
+                }
+            });
+        });
+    </script>
+</iluria.if.slideshow.is.enabled>

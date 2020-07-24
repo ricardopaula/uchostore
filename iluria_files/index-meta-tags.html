@@ -1,0 +1,22 @@
+<!-- Tags do Facebook -->
+<meta property="og:type" content="article"/>
+<meta property="og:title" content="$iluria.shop.name"/>
+<meta property="og:description" content="$iluria.shop.description"/>
+<meta property="og:url" content="http://$iluria.shop.domain/"/>
+
+<!-- Logo da loja para aparecer no Facebook -->
+<iluria.if.shop.has.facebook.logo>
+    <meta property="og:image" content="$iluria.shop.facebook.logo.url"/>
+</iluria.if.shop.has.facebook.logo>
+<iluria.if.shop.has.not.facebook.logo>
+    <iluria.if.shop.has.banner>
+        <meta property="og:image" content="$iluria.v2.shop.banner.url"/>
+    </iluria.if.shop.has.banner>
+</iluria.if.shop.has.not.facebook.logo>
+
+<!-- Título e descrição da loja -->
+<title>$iluria.shop.name</title>
+<meta name="description" content="$iluria.shop.description" />
+
+<!-- Link canônico para SEO -->
+<link rel="canonical" href="http://$iluria.shop.domain/" />

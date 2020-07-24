@@ -1,0 +1,98 @@
+<!-- Este arquivo é comum a quase todas as páginas da loja -->
+<!-- Ele representa a estrutura geral do layout da loja -->
+<body>
+    
+    <iluria.if.shop.header.is.position.2>
+        <iluria.include>header.html</iluria.include>
+    </iluria.if.shop.header.is.position.2>
+    
+    <iluria.if.shop.header.is.position.4>
+       	<div id="header" class="header-external">
+			<div id="header-inner">
+		       	<table width="100%">
+		           	<tr>
+		              	<td width="50%">
+		                	 <!-- Imagem do logo da loja -->
+		               	    <iluria.include>logo.html</iluria.include>
+		               	</td>
+		               	<td align="right">
+		                	<iluria.include>header.html</iluria.include>
+		            	</td>
+		        	</tr>
+		    	</table>
+		    </div>
+		</div>	
+   	</iluria.if.shop.header.is.position.4>
+   	                
+    <iluria.if.shop.header.is.position.5>
+    	<iluria.include>header.html</iluria.include>
+    	<div class="header-logo-full">
+        	<iluria.include>logo.html</iluria.include>
+        </div>
+	</iluria.if.shop.header.is.position.5>
+    
+    <div id="canvas" class="canvas-border">
+        <div id="canvas-inner">
+            <div id="canvas-inner-header">
+                
+                <iluria.if.shop.header.is.position.3>
+                    <iluria.include>header.html</iluria.include>
+                    <div class="header-logo-full">
+                        <iluria.include>logo.html</iluria.include>
+                    </div>
+                </iluria.if.shop.header.is.position.3>
+                
+                <iluria.if.shop.header.is.position.2>
+                    <!-- Imagem do logo da loja -->
+                    <div class="header-logo-full">
+                        <iluria.include>logo.html</iluria.include>
+                    </div>
+                </iluria.if.shop.header.is.position.2>
+                
+                <iluria.if.shop.header.is.position.1>
+                    <table width="100%" cellpadding=0 cellspacing=0>
+                        <tr>
+                            <td width="50%">
+                                <!-- Imagem do logo da loja -->
+                                <iluria.include>logo.html</iluria.include>
+                            </td>
+                            <td align="right">
+                            	<!-- Cabeçalho -->
+                                <iluria.include>header.html</iluria.include>
+                            </td>
+                        </tr>
+                    </table>
+                </iluria.if.shop.header.is.position.1>
+                
+                <!-- Verifica se a barra de categorias está na horizontal -->            
+                <iluria.if.category.position.is.horizontal>
+                    <iluria.include>horizontal-categories.html</iluria.include>
+                </iluria.if.category.position.is.horizontal>
+            </div>
+            
+            <div class="canvas-body">
+                
+                <iluria.include>top-images.html</iluria.include>
+
+                <!-- Verifica se a barra de categorias está na vertical -->            
+                <iluria.if.category.position.is.vertical>
+                
+                	<!-- Verifica se a barra de navegação é externa -->
+	                <iluria.if.breadcrumb.is.external>
+	               	 	<iluria.include>breadcrumb.html</iluria.include>
+	               	</iluria.if.breadcrumb.is.external>
+                    
+                    <!-- Verifica se a página é elegível para mostrar as categorias -->
+                    <!-- Apenas as páginas index.html, product.html e search.html são elegíveis para categoria vertical  -->
+                    <iluria.if.show.vertical.category>
+                        
+                        <div class="left-part-inner-body vertical-menu">
+                            <iluria.include>vertical-categories.html</iluria.include>
+                            <iluria.include>aux-banners.html</iluria.include>
+                        </div>
+                        
+                    </iluria.if.show.vertical.category>
+                </iluria.if.category.position.is.vertical>
+
+                <div id="canvas-inner-body">
+                    

@@ -1,0 +1,189 @@
+<!-- Ajusta o CSS de acordo com o tamanho e formato das thumbs -->
+<!-- O formato da thumb pode ser livre ou fixo e o tamanho pode ser pequeno ou médio -->
+<iluria.if.product.thumb.size.is.small>
+    <style>
+        <iluria.if.category.position.is.vertical>
+        .product-item-container { width: 216px; overflow:hidden; margin: 0px 20px 20px 0px; }             
+        </iluria.if.category.position.is.vertical>
+        
+        <iluria.if.category.position.is.horizontal>
+        .product-item-container { width: 216px; overflow:hidden; margin: 0px 15px 15px 0px; } 
+        </iluria.if.category.position.is.horizontal>
+        .product-item-container-inner {  }
+        .iluria-product-thumb { width: 100% !important; }
+    </style>
+</iluria.if.product.thumb.size.is.small>
+<iluria.if.product.thumb.size.is.medium>
+    <style>
+        .product-item-container { width: 286px; margin: 0px 25px 25px 0px; } 
+        .product-item-container-inner {  }
+        .iluria-product-thumb { width: 100% !important; }
+    </style>
+</iluria.if.product.thumb.size.is.medium>
+
+
+
+
+
+<iluria.if.product.thumb.size.is.free>
+    <style> 
+        <iluria.if.category.position.is.vertical>
+        .product-item-container { margin-right: 0px; margin-bottom: 20px; }            
+        </iluria.if.category.position.is.vertical>
+        
+        <iluria.if.category.position.is.horizontal>
+        <iluria.if.product.thumb.size.is.small>
+        .product-item-container { margin-right: 0px; margin-bottom: 15px; }
+        </iluria.if.product.thumb.size.is.small>  
+        <iluria.if.product.thumb.size.is.medium>
+        .product-item-container { margin-right: 0px; margin-bottom: 24px; }  
+        </iluria.if.product.thumb.size.is.medium>
+        </iluria.if.category.position.is.horizontal>
+    </style> 
+</iluria.if.product.thumb.size.is.free>
+
+<!-- Lista de produtos -->
+<div id="product-list-container">
+    <iluria.show.product.list>
+        <div class="product-item-container">
+            <div class="product-item-container-inner">
+                <a href="$iluria.v2.product.details.url">
+                    <div class="product-thumb-container">
+                        <!-- Thumb do produto -->
+                        <div class="product-thumb-image-container">
+                            <iluria.if.product.thumb.size.is.small>
+                                <iluria.if.product.thumb.size.is.square>    
+                                    $iluria.product.thumb.image(215,215)
+                                </iluria.if.product.thumb.size.is.square>
+                                <iluria.if.product.thumb.size.is.fluid>    
+                                    $iluria.product.thumb.image(215,215)
+                                </iluria.if.product.thumb.size.is.fluid>
+                                <iluria.if.product.thumb.size.is.landscape>    
+                                    $iluria.product.thumb.image(215,160)
+                                </iluria.if.product.thumb.size.is.landscape>
+                                <iluria.if.product.thumb.size.is.portrait>    
+                                    $iluria.product.thumb.image(215,285)
+                                </iluria.if.product.thumb.size.is.portrait>
+                            </iluria.if.product.thumb.size.is.small>
+                            
+                            
+                            <iluria.if.product.thumb.size.is.medium>
+                                <iluria.if.product.thumb.size.is.square>    
+                                    $iluria.product.thumb.image(285,285)
+                                </iluria.if.product.thumb.size.is.square>
+                                <iluria.if.product.thumb.size.is.fluid>    
+                                    $iluria.product.thumb.image(285,285)
+                                </iluria.if.product.thumb.size.is.fluid>
+                                <iluria.if.product.thumb.size.is.landscape>    
+                                    $iluria.product.thumb.image(285,215)
+                                </iluria.if.product.thumb.size.is.landscape>
+                                <iluria.if.product.thumb.size.is.portrait>    
+                                    $iluria.product.thumb.image(285,380)
+                                </iluria.if.product.thumb.size.is.portrait>
+                            </iluria.if.product.thumb.size.is.medium>
+                        </div>
+                        
+                        <!-- Marcação do produto esgotado -->
+                        <iluria.if.show.product.soldout.image>
+                            <div class="product-thumb-soldout-image-container">
+                                <img src="$iluria.v2.product.soldout.image.url" border=0 />
+                            </div>
+                        </iluria.if.show.product.soldout.image>
+                        
+                        <iluria.if.not.show.product.soldout.image>
+                            
+                            <iluria.if.product.is.new>
+                                
+                                <iluria.if.show.product.new.image>
+                                    
+                                    <!-- Marcação de novidade nos produto -->
+                                    <div class="product-thumb-new-product-image-container thumb-stamp">
+                                        <img src="$iluria.thumb.stamp.new.product.url" border=0 />
+                                    </div>
+                                </iluria.if.show.product.new.image>
+                                
+                                <iluria.if.not.show.product.new.image>
+                                    
+                                    <!-- Marcação do promoção nos produto -->
+                                    <iluria.if.product.has.original.price>
+                                        <iluria.if.show.product.sale.image>
+                                            
+                                            <div class="product-thumb-sale-image-container thumb-stamp">
+                                                <img src="$iluria.thumb.stamp.sale.url" border=0 /> 
+                                            </div>
+                                            
+                                        </iluria.if.show.product.sale.image>
+                                    </iluria.if.product.has.original.price>
+                                    
+                                    <!-- Marcação do frete grátis nos produto -->
+                                    <iluria.if.product.shipping.is.free>
+                                        <iluria.if.show.product.free.shipping.image>
+                                            <div class="product-thumb-free-shipping-image-container thumb-stamp">
+                                                <img src="$iluria.thumb.stamp.free.shipping.url" border=0 />
+                                            </div>
+                                        </iluria.if.show.product.free.shipping.image>
+                                    </iluria.if.product.shipping.is.free>
+                                    
+                                </iluria.if.not.show.product.new.image>
+                                
+                            </iluria.if.product.is.new>
+                            
+                            <iluria.if.product.is.not.new>
+                                
+                                <!-- Marcação do promoção nos produto -->
+                                <iluria.if.product.has.original.price>
+                                    <iluria.if.show.product.sale.image>
+                                        
+                                        <div class="product-thumb-sale-image-container thumb-stamp">
+                                            <img src="$iluria.thumb.stamp.sale.url" border=0 /> 
+                                        </div>
+                                        
+                                    </iluria.if.show.product.sale.image>
+                                </iluria.if.product.has.original.price>
+                                
+                                <!-- Marcação do frete grátis nos produto -->
+                                <iluria.if.product.shipping.is.free>
+                                    <iluria.if.show.product.free.shipping.image>
+                                        <div class="product-thumb-free-shipping-image-container thumb-stamp">
+                                            <img src="$iluria.thumb.stamp.free.shipping.url" border=0 />
+                                        </div>
+                                    </iluria.if.show.product.free.shipping.image>
+                                </iluria.if.product.shipping.is.free>
+                                
+                            </iluria.if.product.is.not.new>
+                            
+                        </iluria.if.not.show.product.soldout.image>
+                        
+                        <!-- Zoom da thumb -->
+                        <iluria.v2.if.thumb.zoom.is.enabled>
+                            <div onclick="return zoomProductThumb('$iluria.product.picture.850xN','$iluria.v2.product.details.url');" class="product-thumb-zoom-icon">
+                                <img src="$iluria.template-assets-url/search-icon.png" border=0/>zoom
+                            </div>
+                        </iluria.v2.if.thumb.zoom.is.enabled>
+                    </div>
+                </a>
+                <div class="product-thumb-caption-container">
+                    <!-- Título do produto -->
+                    <div class="iluria-layout-search-product-title">
+                        <a href="$iluria.v2.product.details.url">
+                            $iluria.product.title
+                        </a>
+                    </div>
+                    
+                    <!-- Preços -->
+                    <div class="product-thumb-price-container">
+                        <iluria.if.show.product.soldout.text>
+                            <div class="product-thumb-price">Esgotado</div>
+                        </iluria.if.show.product.soldout.text>
+                        <iluria.if.show.product.price>
+                            <div class="product-thumb-original-price">$iluria.v2.product.original.price</div>
+                            <div class="product-thumb-price">$iluria.v2.product.price</div>
+                            <div class="product-thumb-price-installment">$iluria.v2.product.installment</div>
+                            <div class="product-thumb-price-installment">$iluria.v2.product.deposit.discount.price</div>
+                        </iluria.if.show.product.price>
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </iluria.show.product.list>    
+</div>

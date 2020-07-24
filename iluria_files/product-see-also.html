@@ -1,0 +1,27 @@
+<iluria.if.product.see.also.is.enabled>
+    <div class="sub-header">
+        Veja também
+    </div>
+    <iluria.load.product.list>
+        <pageSize>5</pageSize>
+        <sortBy>iluria.sort.by.random</sortBy>
+    </iluria.load.product.list>
+    <div class="see-also-wrapper">
+	    <iluria.show.product.list>
+	        <div class="see-also-container">
+	            <a href="$iluria.product.details.seo.url">
+	                <img src="$iluria.product.picture.230x230" border=0 alt="$iluria.product.title" title="$iluria.product.title"/>
+	            </a>
+	        </div>
+	    </iluria.show.product.list>
+    </div>
+    <script>
+        $(function(){
+            $(".see-also-container").each(function(i) {
+                if((i+1)%5 == 0)
+                    $(this).css("padding-right","0px");
+            });
+        });
+    </script>
+    <div style="clear: both"></div>
+</iluria.if.product.see.also.is.enabled>

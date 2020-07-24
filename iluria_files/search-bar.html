@@ -1,0 +1,16 @@
+<!-- Barra de pesquisa de produtos -->
+<form action="search.html" method="post" id="search-form">
+    <div class="search-bar">
+        <input type="text" name="searchQuery" autocomplete="off"><a href="javascript: doSearch();" class="search-bar-button">s</a>
+    </div>
+</form>
+
+<script>
+    $(function() { 
+        $(".search-bar input").focus(function() { $(this).val(""); }); 
+    });
+    function doSearch() {
+        $("#search-form").submit();
+    }
+</script>
+

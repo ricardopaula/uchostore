@@ -1,0 +1,154 @@
+<iluria.include>head-begin.html</iluria.include>
+<title>$iluria.shop.name</title>
+<iluria.include>head-end.html</iluria.include>
+<iluria.include>body-begin.html</iluria.include>
+
+<div class="login-container">
+    <table width="100%"> 
+        <tr valign="top">
+            <td width="40%">                
+                <form name="loginForm" action="/clientServices.do" method="post" autocomplete="off">
+                    <input type="hidden" name="command" value="loginWithSSLFirstStep">
+                    <input type="hidden" name="redirectUrl" value="/">
+                    <input type="hidden" name="redirectErrorUrl" value="/login-ssl.html">
+                    <div>
+                        <span class="login-title">
+                            Já tem cadastro na loja?
+                        </span>
+                        <span class="login-text">
+                            Se você já tem seu cadastro na loja, informe nos campos abaixo seu email e sua senha de acesso à loja.
+                        </span>
+                    </div>
+                    <div class="login-field-container">
+                        <div>Email:</div>
+                        <input type="text" name="username" value="">
+                    </div>
+                    <div class="login-field-container">
+                        <div>Sua senha:</div>
+                        <input type="password" name="password" value="">
+                    </div>
+                    <div class="sign-in-button-container" style="display:table;">
+                        <div onclick="Iluria.inlineLogin.doLogin()" class="login-button">Entrar</div>
+                        
+                        <span onclick="Iluria.inlineLogin.recoverPasswordSSL()" class="login-recover-password">
+                            Esqueci a senha
+                        </span>
+                    </div>
+                </form>
+                
+                <iluria.if.facebook.login.is.enabled>
+                    <div class="facebook-sign-in-button-container">
+                        <span class="login-title">Login via Facebook</span>
+                        <span class="login-text">
+                            Se preferir, registre-se usando sua conta do Facebook. <br>
+                            É rápido, fácil e seguro.
+                        </span>
+                        <iframe id="facebookframe" width="$iluria.login.facebook.width" height="$iluria.login.facebook.height" scrolling="no" frameborder=0 src="$iluria.login.facebook.url" allowtransparency="true" ></iframe>
+                    </div>
+                </iluria.if.facebook.login.is.enabled>
+            </td>
+            <td width="20%" align="center" valign="middle">
+                <div class="login-divider">
+                    <span>&nbsp;</span>
+                </div>
+            </td>
+            <td width="40%">
+                <form name="signupForm" action="/clientServices.do" method="post" id="signupForm" autocomplete="off">
+                	<input type="hidden" name="command" value="signupWithSSLForm">
+                    <input type="hidden" name="redirectUrl" value="/">
+                    <input type="hidden" name="redirectErrorUrl" value="/login-ssl.html">
+                    <div>
+                        <span class="login-title">
+                            Criar novo cadastro
+                        </span>
+                        <span class="login-text">
+                            Use o formulário abaixo para cadastrar-se na loja. <br>
+                            É rápido e fácil.
+                        </span>
+                    </div>                
+                    <div class="login-field-container">
+                        <div class="">
+                            Nome completo:
+                        </div>
+                        <input type="text" name="fullname" value="">
+                    </div>
+                    <div class="login-field-container">
+                        <div class="">Email:</div>
+                        <input type="text" name="email" value="">
+                    </div>
+                    <div class="login-field-container">
+                        <div class="">
+                            Digite uma senha:
+                        </div>
+                        <input type="password" name="password" value="">
+                    </div>
+                    <div class="login-field-container">
+                        <div class="">
+                            Confirme a senha:
+                        </div>
+                        <input type="password" name="passwordConfirm" value="">
+                    </div>
+                    <div class="sign-up-button-container">
+                        <div onclick="Iluria.inlineLogin.signup()" class="login-button">Cadastrar</div>
+                    </div>
+                </form>                
+            </td>
+        </tr>
+    </table>
+</div>
+
+<script>    
+    $(function() {
+        $('.login-container input[type=text]:first').focus();
+    });
+</script>
+
+<script>
+    $(function() {
+        <iluria.if.login.status.is.username.empty>
+            alert("Por favor informe seu email.");
+        </iluria.if.login.status.is.username.empty>
+            
+            <iluria.if.login.status.is.password.empty>
+            alert("Por favor informe sua senha.");
+        </iluria.if.login.status.is.password.empty>
+            
+            <iluria.if.login.status.is.username.not.found>
+            alert("As informações de login estão incorretas. Por favor tente novamente.");
+        </iluria.if.login.status.is.username.not.found>
+            
+            <iluria.if.login.status.is.recover.password.sucess>
+            alert("Sua senha de acesso à loja foi enviada neste momento para o email informado. Verifique a caixa de entrada e também a pasta de lixo eletrônico em seu leitor de email.");
+        </iluria.if.login.status.is.recover.password.sucess>
+            
+            <iluria.if.login.status.is.invalid.login.data>
+            alert("As informações de login estão incorretas. Por favor tente novamente.");
+        </iluria.if.login.status.is.invalid.login.data>
+            
+            <iluria.if.signup.status.is.empty.email>
+            alert("Por favor informe seu email.");
+        </iluria.if.signup.status.is.empty.email>
+            
+            <iluria.if.signup.status.is.empty.fullname>
+            alert("Por favor informe seu nome completo.");
+        </iluria.if.signup.status.is.empty.fullname>
+            
+            <iluria.if.signup.status.is.email.already.exists>
+            alert("Este email já está cadastrado em nossa loja. Por favor recupere a senha ou informe um email diferente.");
+        </iluria.if.signup.status.is.email.already.exists>
+            
+            <iluria.if.signup.status.is.empty.password>
+            alert("Por favor informe sua senha.");
+        </iluria.if.signup.status.is.empty.password>
+            });
+</script>
+
+<script>
+    function trim(str) {
+        if(typeof(str) == "undefined") str = "";
+        return str.replace(/^\s+|\s+$/g,"");
+    }
+    
+</script>
+
+<iluria.include>body-end.html</iluria.include>

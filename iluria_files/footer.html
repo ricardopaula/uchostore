@@ -1,0 +1,73 @@
+
+<!-- Rodapé -->
+<div id="footer" class="footer">
+    <div id="canvas-inner-footer">
+        <table cellpadding=0 cellspacing=0 width="100%">
+            <tr valign="top">
+                <td>
+                    <!-- Páginas criadas pelo lojista -->
+                    <iluria.include>footer-pages.html</iluria.include>
+                    
+                    <!-- Selo do E-Bit -->
+                    <iluria.if.shop.ebit.enabled>
+                        <div class="ebit-stamp">
+                            $iluria.ebit.stamp.tag
+                        </div>
+                    </iluria.if.shop.ebit.enabled>
+                </td>
+                <td style="padding-left: 20px">
+                    <iluria.v2.if.index.payment.banner.is.enabled>
+                        <!-- Imagem do banner de meios de pagamentos -->
+                        <iluria.include>footer-payment-options.html</iluria.include>
+                    </iluria.v2.if.index.payment.banner.is.enabled>
+                </td>
+                
+                <td>
+                    <iluria.if.shop.has.fb.widget>
+                        <!-- Widget do Facebook -->
+                        <div style="padding-left: 20px; padding-bottom: 20px;">
+                            <iluria.include>footer-facebook-widget.html</iluria.include>
+                        </div>
+                    </iluria.if.shop.has.fb.widget>
+                    <iluria.if.shop.has.google.plus.widget>
+                        <!-- Widget do Google+ -->
+                        <div style="padding-left: 20px">
+                            <iluria.include>footer-google-widget.html</iluria.include>
+                        </div>
+                    </iluria.if.shop.has.google.plus.widget>
+                </td>        
+                
+                <td style="padding-left: 20px">
+                    <div style="max-width: 225px; overflow: hidden;">
+                        <!-- Campo da newsletter -->
+                        <iluria.include>footer-newsletter.html</iluria.include>
+                        
+                        <!-- Ícones das mídias sociais -->
+                        <iluria.include>footer-social-media-icons.html</iluria.include>
+                        
+                        <!-- Selos de segurança -->
+                        <iluria.if.shop.has.security.stamp>
+                            <iluria.include>footer-security-stamps.html</iluria.include>
+                        </iluria.if.shop.has.security.stamp>
+                    </div> 
+                </td>
+            </tr>
+        </table>
+        
+        <iluria.if.shop.has.footer.text>
+            <center>
+                <div class="copyright pages-container">
+                    $iluria.footer.text
+                </div>
+            </center>
+        </iluria.if.shop.has.footer.text>
+        
+        <center>
+            <div class="copyright pages-container">
+                Copyright &copy; $iluria.shop.name - Todos os direitos reservados <br>
+                <iluria.copyright/> 
+                <!-- Atenção: É proibido retirar o copyright Iluria -->
+            </div>
+        </center>
+    </div>
+</div>

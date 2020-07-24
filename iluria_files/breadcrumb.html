@@ -1,0 +1,49 @@
+<!-- Barra de navegação -->
+<iluria.if.breadcrumb.is.external>
+	<style>
+		.breadcrumb{
+			margin-bottom: 20px;
+		}
+	</style>
+</iluria.if.breadcrumb.is.external>
+
+
+<div class="breadcrumb" style="padding: 0px !important">
+	<table width="100%" cellpadding=0 cellspacing=0>
+		<tr valign="middle">
+			<td valign="middle">
+				<div class="breadcrumb" style="margin: 0px !important; background-color: transparent !important;">
+				    <a href="index.html">Início</a>
+				    <span class="breadcrumb-separator">&rsaquo;</span> <a href="search.html">Todos os produtos</a>
+				    <iluria.if.search.category.is.defined>
+				        <iluria.if.search.subcategory.is.defined>
+				            <span class="breadcrumb-separator">&rsaquo;</span> <a style="padding: 0px" href="$iluria.search.category.url">$iluria.search.category.name</a>
+				            <span class="breadcrumb-separator">&rsaquo;</span> <a style="padding: 0px" href="$iluria.search.subcategory.url?pageNum=$iluria.search.category.page.number&sortBy=$iluria.search.category.sort.by">$iluria.search.subcategory.name</a>
+				        </iluria.if.search.subcategory.is.defined>
+				        <iluria.if.search.subcategory.is.not.defined>
+				            <span class="breadcrumb-separator">&rsaquo;</span> <a style="padding: 0px" href="$iluria.search.category.url?pageNum=$iluria.search.category.page.number&sortBy=$iluria.search.category.sort.by">$iluria.search.category.name</a>
+				        </iluria.if.search.subcategory.is.not.defined>
+				    </iluria.if.search.category.is.defined>   
+				    <iluria.if.search.category.is.not.defined>
+				        <iluria.if.search.query.is.not.empty>
+				            <span class="breadcrumb-separator">&rsaquo;</span> $iluria.search.query.escaped
+				        </iluria.if.search.query.is.not.empty>
+				    </iluria.if.search.category.is.not.defined>
+				</div>
+    		</td>
+    		
+    		<iluria.if.sort.field.is.enabled>
+	    		<td align="right">
+	    			<div class="iluria-sort">
+	    				<select style="float: left; visibility: hidden;"><option></option></select>
+	    			</div>
+	    			<iluria.if.page.is.search>
+		    			<iluria.include.sort/>
+		    		</iluria.if.page.is.search>
+	    		</td>
+	    	</iluria.if.sort.field.is.enabled>
+    		
+    	</tr>
+    </table>
+    
+</div>

@@ -1,0 +1,22 @@
+<!-- Botão 'Minha conta' -->
+<div class="my-account-button iluria-layout-menu">
+    <iluria.v2.if.shop.has.account.button>
+        <a href="javascript: doMyAccountClick()"><img src="$iluria.v2.shop.account.button.url" border=0></a>
+    </iluria.v2.if.shop.has.account.button>
+    <iluria.v2.if.shop.has.not.account.button>
+        <div>
+            <span>f</span> <a href="javascript: doMyAccountClick()">Minha conta</a>
+        </div>
+    </iluria.v2.if.shop.has.not.account.button>
+</div>
+
+<script>
+    function doMyAccountClick() {
+        <iluria.if.client.is.logged>
+            Iluria.clientAccount.showClientAccountForm();
+        </iluria.if.client.is.logged>
+            <iluria.if.client.is.not.logged>
+            Iluria.showLoginSSLForm();            
+        </iluria.if.client.is.not.logged>
+            }
+</script> 

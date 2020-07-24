@@ -1,0 +1,102 @@
+<iluria.include>head-begin.html</iluria.include>
+<title>$iluria.shop.name</title>
+<iluria.include>head-end.html</iluria.include>
+<iluria.include>body-begin.html</iluria.include>
+
+<!-- Este arquivo é carregado no final do processo da compra -->
+<!-- Deve ser configurado no Pagseguro, Paypal etc. a URL de retorno apontando para este arquivo -->
+
+<iluria.if.payment.order.is.inline.pagseguro.backup>
+	<script>
+		$(function() {
+			alert("Seu pedido foi registrado porém o PagSeguro não conseguiu efetuar o pagamento. Para prosseguir com o pagamento, clique em OK e depois no link fornecido nessa página.");
+		});
+	</script>
+</iluria.if.payment.order.is.inline.pagseguro.backup>
+
+<iluria.if.payment.order.is.not.inline.pagseguro.backup>
+	<iluria.if.payment.order.is.inline.pagseguro.boleto>
+		<script>
+			window.open("$iluria.order.payment.inline.pagseguro.boleto.url");
+		</script>
+	</iluria.if.payment.order.is.inline.pagseguro.boleto>
+	
+	<iluria.if.payment.order.is.inline.pagseguro.debito>
+		<script>
+			window.open("$iluria.order.payment.inline.pagseguro.debito.url");
+		</script>
+	</iluria.if.payment.order.is.inline.pagseguro.debito>
+</iluria.if.payment.order.is.not.inline.pagseguro.backup>
+
+<div class="cart-container">
+    
+    <table width="100%" height="450" cellpadding="0" cellspacing="0">
+        <tr valign="middle" align="center">
+            <td>
+                <div class="iluria-page-content">
+                	<iluria.if.payment.order.is.inline.pagseguro.backup>
+                		<span>
+	                        Seu pedido foi registrado porém o PagSeguro não conseguiu efetuar o pagamento. Por favor clique no link abaixo para prosseguir pelo pagamento manual. 
+	                    </span>
+	                    <br><br>
+	                    <a href="javascript: Iluria.clientAccount.showClientAccountForm();">Clique aqui</a> para acompanhar seu pedido.
+                	</iluria.if.payment.order.is.inline.pagseguro.backup>
+                	
+                	<iluria.if.payment.order.is.not.inline.pagseguro.backup>
+                		Seu pedido $iluria.order.id no valor de R$ $iluria.order.total.formatted foi recebido com sucesso.
+	                    <br><br>
+	                    <a href="javascript: Iluria.clientAccount.showClientAccountForm();">Clique aqui</a> para acompanhar seu pedido.
+	                    
+	                    <!-- Quando o pagamento é por depósito -->
+		                <iluria.if.payment.order.is.transfer>
+		                    <div>
+		                        <br>Instruções para depósito bancário: <br><br>
+		                        $iluria.order.payment.instructions
+		                    </div>
+		                </iluria.if.payment.order.is.transfer>
+		                
+		                <!-- Quando o pagamento é por checkout transparente do PagSeguro -->
+		                <iluria.if.payment.order.is.inline.pagseguro.boleto>
+		                    <div>
+		                    	<br>
+		                    	<div id="boleto-link" class='iluria-cart-button button' onclick="window.open('$iluria.order.payment.inline.pagseguro.boleto.url')">
+									Gerar boleto bancário
+								</div>
+		                    </div>
+		                </iluria.if.payment.order.is.inline.pagseguro.boleto>
+		                
+		                <iluria.if.payment.order.is.inline.pagseguro.debito>
+		                    <div>
+		                    	<br>
+		                    	<div id="debito-link" class='iluria-cart-button button' onclick="window.open('$iluria.order.payment.inline.pagseguro.debito.url')">
+									Ir para a página do banco
+								</div>
+		                    </div>
+		                </iluria.if.payment.order.is.inline.pagseguro.debito>
+                	</iluria.if.payment.order.is.not.inline.pagseguro.backup>
+                	                
+	                <!-- Quando o pagamento é feito na entrega -->
+	                <iluria.if.payment.order.is.on.delivery>
+	                    <div>
+	                        <br>Instruções para o pagamento na entrega: <br><br>
+	                        $iluria.order.payment.on.delivery.instructions
+	                    </div>
+	                </iluria.if.payment.order.is.on.delivery>
+	                
+	                <!-- Selo do E-Bit -->
+	                <div class="ebit-banner">
+	                    <iluria.if.shop.ebit.enabled>
+	                        $iluria.ebit.banner.tag
+	                    </iluria.if.shop.ebit.enabled>
+	                </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<iluria.if.shop.has.conversion.tag>
+       $iluria.conversion.tag
+</iluria.if.shop.has.conversion.tag>
+
+<iluria.include>body-end.html</iluria.include>

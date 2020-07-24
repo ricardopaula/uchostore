@@ -1,0 +1,15 @@
+<iluria.include>head-begin.html</iluria.include>
+<title>$iluria.shop.name</title>
+<iluria.include>head-end.html</iluria.include>
+<iluria.include>body-begin.html</iluria.include>
+<iluria.include>page-breadcrumb.html</iluria.include>
+$iluria.show.testimonial.list
+<iluria.if.product.not.found>
+    <center>
+        <div class="productNotFound">
+            <iluria.if.locale.is.pt-br>Nenhum depoimento encontrado</iluria.if.locale.is.pt-br>
+        </div>
+    </center>
+</iluria.if.product.not.found>
+
+<iluria.include>body-end.html</iluria.include>

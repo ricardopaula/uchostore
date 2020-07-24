@@ -1,0 +1,71 @@
+<iluria.include>head-begin.html</iluria.include>
+<title>$iluria.shop.name</title>
+<iluria.include>head-end.html</iluria.include>
+<iluria.include>body-begin.html</iluria.include>
+
+<script>
+    
+    <iluria.if.cart.new.quantity.is.less.than.minimum.quantity>
+        alert("Quantidade menor que o mínimo permitido.");
+    </iluria.if.cart.new.quantity.is.less.than.minimum.quantity>
+        
+    <iluria.if.cart.new.quantity.is.more.than.maximum.quantity>
+        <iluria.if.show.product.quantity>
+	        alert("Quantidade maior que o máximo permitido. Quantidade disponível: $iluria.product.maximum.quantity");
+	    </iluria.if.show.product.quantity>
+	        <iluria.if.not.show.product.quantity>
+	        alert("Quantidade maior que o máximo permitido.");
+	    </iluria.if.not.show.product.quantity>
+    </iluria.if.cart.new.quantity.is.more.than.maximum.quantity>
+        
+        <iluria.if.cart.coupon.is.invalid>
+        alert("Cupom de desconto inválido ou expirado.");
+    </iluria.if.cart.coupon.is.invalid>
+        
+        <iluria.if.cart.shipping.error>
+        alert("Não foi possível calcular o frete automaticamente porque o peso ou volume dos produtos excede o máximo permitido pelos Correios. Para finalizar o pedido, por gentileza entre em contato com nosso atendimento para que possamos informar o valor do frete.");
+    </iluria.if.cart.shipping.error>
+        
+        <iluria.if.cart.no.product.shipping.info>
+        alert("Não foi possível calcular o frete pois alguns produtos estão\nsem informação de peso e medidas. Para finalizar o pedido,\npor gentileza entre em contato com nosso atendimento para\nque possamos informar o valor do frete.");
+    </iluria.if.cart.no.product.shipping.info>
+        
+        <iluria.if.cart.post.office.interface.down>
+        alert("Não foi possível calcular o frete para o CEP informado.\nO CEP pode estar errado ou o serviço de cálculo de frete\ndos Correios pode estar fora do ar. Para finalizar o pedido,\npor gentileza entre em contato com nosso atendimento\npara que possamos informar o valor do frete.");
+    </iluria.if.cart.post.office.interface.down>
+        
+	<iluria.if.cart.invalid.zip>
+		alert("O CEP informado é inválido.");
+	</iluria.if.cart.invalid.zip>
+		
+	<iluria.if.update.quantity.error>
+		alert("Um ou mais produtos não possuem mais a quantidade informada. A quantidade do pedido foi reduzida.");
+	</iluria.if.update.quantity.error>
+	    
+	<iluria.if.update.soldout.error>
+	    alert("Um ou mais produtos não estão mais disponíveis e por isso foram retirados do carrinho.");
+	</iluria.if.update.soldout.error>
+
+</script>
+
+<div class="cart-container">
+    
+    <iluria.if.cart.is.empty>
+        <table width="100%" height="350" cellpadding="0" cellspacing="0">
+            <tr valign="middle" align="center">
+                <td>
+                    <div class="iluria-cart-title">
+                        Seu carrinho de compras está vazio
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </iluria.if.cart.is.empty>
+    
+    <iluria.if.cart.is.not.empty>
+        <iluria.cart/>
+    </iluria.if.cart.is.not.empty>
+</div>
+
+<iluria.include>body-end.html</iluria.include>
+

@@ -1,0 +1,25 @@
+<iluria.if.client.is.logged>
+    <div class="logout-button iluria-layout-menu">
+        <a href="javascript: Iluria.logoutUser();">
+            <iluria.v2.if.shop.has.signout.button>
+                <img src="$iluria.v2.shop.signout.button.url" border=0>
+            </iluria.v2.if.shop.has.signout.button>
+            <iluria.v2.if.shop.has.not.signout.button>
+                <div>Sair</div>
+            </iluria.v2.if.shop.has.not.signout.button>
+        </a>
+    </div>
+</iluria.if.client.is.logged>
+
+<iluria.if.client.not.logged>
+	<div class="logout-button iluria-layout-menu">
+        <a href="javascript: Iluria.showLoginSSLForm();">
+            <iluria.v2.if.shop.has.signin.button>
+                <img src="$iluria.v2.shop.signin.button.url" border=0>
+            </iluria.v2.if.shop.has.signin.button>
+            <iluria.v2.if.shop.has.not.signin.button>
+                <div>Entrar</div>
+            </iluria.v2.if.shop.has.not.signin.button>
+        </a>
+    </div>
+</iluria.if.client.not.logged>

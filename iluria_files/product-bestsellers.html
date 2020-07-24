@@ -1,0 +1,21 @@
+<!-- Carrega a lista de produtos mais vendidos -->
+    <iluria.load.product.list>
+        <searchQuery>$iluria.bestsellers.search.tag</searchQuery>
+        <isFromMainPage>true</isFromMainPage>
+    </iluria.load.product.list>
+    
+    <!-- Mostra a lista de produtos -->
+    <iluria.if.product.found>
+        
+        <iluria.if.bestsellers.title.is.enabled>
+	        <div class="featured-products-title">
+	            $iluria.bestsellers.title
+	        </div>
+        </iluria.if.bestsellers.title.is.enabled>
+        
+        <!-- Lista de produtos -->
+        <div class="bestsellers-product-list-container">
+        	<iluria.include>product-list.html</iluria.include>
+        </div>
+        
+    </iluria.if.product.found>

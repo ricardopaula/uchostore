@@ -1,0 +1,122 @@
+<!-- Carrega a lista de categorias e subcategorias -->
+<iluria.load.category.list />
+<iluria.load.category.page.list/>
+
+<style>
+    .vertical-menu {
+        
+        <iluria.if.vertical.category.alignment.is.right>
+            margin-left: 20px;
+        	margin-right: 0;
+        </iluria.if.vertical.category.alignment.is.right>
+            
+        <iluria.if.vertical.category.alignment.is.left>
+            margin-left: 0;
+        	margin-right: 20px;
+        </iluria.if.vertical.category.alignment.is.left>
+            
+    }                    
+</style>
+
+<div class="vertical-menu">
+    <div id="categories-menu-container" class="categories-menu-container">
+        <div class="categories-menu">
+            <!-- Categorias -->
+            <ul id="jMenu">
+
+				<iluria.if.page.position.is.before.category>
+	                <iluria.show.page.list>
+	                	<li><span class="category-menu" ><a href="$iluria.page.url" class="fNiv category-title">$iluria.page.title</a></span></li>
+	           		</iluria.show.page.list>
+	           	</iluria.if.page.position.is.before.category>	
+
+                <iluria.if.category.has.all.enabled>
+                    <li><span class="category-menu" ><a href="search.html" class="fNiv category-title">$iluria.category.all.text</a></span></li>
+                </iluria.if.category.has.all.enabled>
+                
+                <iluria.show.category.list>
+                    <li class="arrowed-category-menu" webcode="$iluria.category.webcode">
+                        <span class="category-menu"><a class="fNiv category-title" href="$iluria.category.v2.url">$iluria.category.name.escaped</a>
+                            <span class="category-title-arrow"><a class="category-title"></a></span>
+                        </span>
+                        
+                        <!-- Subcategorias -->
+                        <iluria.if.category.has.subcategory>
+                            <ul class="subcategory-menu-container">
+                                <iluria.if.category.has.subcategory.all.enabled>
+                                    <li class="subcategory-menu"><a href="$iluria.subcategory.all.url" class="subcategory-title">$iluria.subcategory.all.text</a></li>
+                                </iluria.if.category.has.subcategory.all.enabled>
+                                <iluria.show.subcategory.list>
+                                    <li class="subcategory-menu"><a href="$iluria.subcategory.url" class="subcategory-title">$iluria.subcategory.name</a></li>
+                                </iluria.show.subcategory.list>
+                            </ul>
+                        </iluria.if.category.has.subcategory>
+                    </li>
+                </iluria.show.category.list>
+                
+                <iluria.if.page.position.is.after.category>
+	                <iluria.show.page.list>
+	                	<li><span class="category-menu" ><a href="$iluria.page.url" class="fNiv category-title">$iluria.page.title</a></span></li>
+	           		</iluria.show.page.list>
+	           	</iluria.if.page.position.is.after.category>	
+           		
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<iluria.if.vertical.category.has.hidden.subcategory>
+    <style>
+        .subcategory-menu-container{
+            display:none;
+        }
+    </style>
+    
+    <script>
+        $(function() {
+            $(".arrowed-category-menu").menuVertical();
+            if($(".arrowed-category-menu[webcode='$iluria.search.category.webcode']").find("ul").length ){
+	            $(".arrowed-category-menu[webcode='$iluria.search.category.webcode']").find(".subcategory-menu-container").show();
+	            $(".arrowed-category-menu[webcode='$iluria.search.category.webcode']").find(".category-title-arrow a").text("4");
+	            $(".arrowed-category-menu[webcode='$iluria.search.category.webcode']").find(".category-menu").attr("menuStatus", "down");
+            }
+        });
+    </script>
+</iluria.if.vertical.category.has.hidden.subcategory>
+
+<style>
+    #canvas-inner-body { width: 690px !important; }
+    #big-image-container, #thumbsContainer { text-align: left !important; }
+    
+    #big-image {
+        max-width: 345px !important; 
+        max-height: 345px !important;
+    }
+    .product-details-container-td-description { overflow: hidden; padding-left: 30px; width: 100% !important; }
+    .product-details-description-wrapper { overflow: hidden; max-width: 305px; margin-left: 0px; width: inherit !importnat; } 
+    .product-details-container-td-pictures { width: 1px !important; }
+    #thumbsContainer { /* width: 345px !important; */ display: table; width: inherit; width: 100%; }
+    #product-details-wrapper { max-width: 680px; overflow: hidden; }
+    #thumbsContainer .thumb-picture  { width: 54px !important; }      
+    .product-social-media-buttons { /* width: 345px !important; */ display: table; }
+    .product-description { max-width: 345px !important; }
+    #comment { width : 600px !important; }
+    .see-also-container img { width: 124px !important; }
+    
+    .aux-banners {
+        float: left;
+        margin: 0px 0px 20px 0px !important;
+    }
+    
+    .aux-banners img { margin-top: 20px !important; }
+    .aux-banners.top-image { width: 100% !important; }
+    
+    #zoom-position {
+        width: 315px !important; 
+        height: 345px !important;
+    }
+
+	.fb-comments span iframe { width: 680px !important; }
+	#categories-menu-container { overflow: hidden; }
+</style>

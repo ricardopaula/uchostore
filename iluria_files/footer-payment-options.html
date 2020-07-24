@@ -1,0 +1,37 @@
+<div class="footer-title">
+    Pagamentos
+</div>
+<iluria.v2.if.user.has.index.payment.banner>
+    <img src="$iluria.v2.payment.banner.url" border=0 style="max-width: 200px; margin: 16px 0px">
+</iluria.v2.if.user.has.index.payment.banner>
+
+<iluria.v2.if.user.has.not.index.payment.banner>
+    <div class="iluria-payment-methods">
+        <dl class="pages-container">
+            <iluria.if.shop.has.money.order>
+                <dd class="pages-item">» Depósito em conta</dd>
+            </iluria.if.shop.has.money.order>
+            <iluria.if.shop.has.pagseguro>
+                <dd class="pages-item">» <a href="http://www.pagseguro.com.br/" target="_blank">Pagseguro</a></dd>
+            </iluria.if.shop.has.pagseguro>
+            <iluria.if.shop.has.paypal>
+                <dd class="pages-item">» <a href="http://www.paypal.com.br/" target="_blank">Paypal</a></dd>
+            </iluria.if.shop.has.paypal>
+            <iluria.if.shop.has.moip>
+                <dd class="pages-item">» <a href="http://www.moip.com.br/" target="_blank">Moip</a></dd>
+            </iluria.if.shop.has.moip>
+            <iluria.if.shop.has.pagamento.digital>
+                <dd class="pages-item">» <a href="http://www.bcash.com.br/" target="_blank">Bcash</a></dd>
+            </iluria.if.shop.has.pagamento.digital>       
+            <iluria.if.shop.has.mercado.pago>
+                <dd class="pages-item">» <a href="http://www.mercadopago.com.br/" target="_blank">Mercado Pago</a></dd>
+            </iluria.if.shop.has.mercado.pago>
+            <iluria.if.shop.has.meu.checkout>
+            	<dd class="pages-item">» <a href="http://www.braspag.com.br/meucheckout/" target="_blank">MeuCheckout</a></dd>
+            </iluria.if.shop.has.meu.checkout>
+            <iluria.if.shop.has.payment.on.delivery>
+            	<dd class="pages-item">» Pagamento na entrega</dd>
+            </iluria.if.shop.has.payment.on.delivery>
+        </dl>
+    </div>
+</iluria.v2.if.user.has.not.index.payment.banner>    

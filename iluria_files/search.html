@@ -1,0 +1,79 @@
+<iluria.include>head-begin.html</iluria.include>
+
+<!-- Título da página -->
+<iluria.if.search.query.is.empty>
+    <title>Todos os produtos - $iluria.shop.name</title>
+</iluria.if.search.query.is.empty>
+<iluria.if.search.query.is.not.empty>
+    <title>$iluria.search.query.escaped - $iluria.shop.name</title>
+</iluria.if.search.query.is.not.empty>
+
+<iluria.include>head-end.html</iluria.include>
+
+<!-- Carrega a lista de produtos -->
+<iluria.load.product.list>
+    <pageSize>$iluria.search.products.count</pageSize>
+    <sortBy>iluria.sort.by.seller</sortBy>
+    <firstListing>true</firstListing>
+</iluria.load.product.list>
+
+<iluria.include>body-begin.html</iluria.include>
+
+<!-- Pop-up newsletter -->
+<iluria.popup/>
+
+<iluria.if.breadcrumb.is.internal>                                                              
+    <table width="100%" cellpadding=0 cellspacing=0 class="search-header">
+        <tr valign="middle">
+            <td align="left">
+                
+                <!-- Barra de navegação (breadcrumb) -->
+                <iluria.include>breadcrumb.html</iluria.include>
+                
+            </td>
+        </tr>
+    </table>
+</iluria.if.breadcrumb.is.internal>
+
+<!-- Banner de categoria, mostrado na search.html apenas -->
+<iluria.if.category.has.banner>
+    
+    <div class="category-banner">
+        <img src="$iluria.category.banner.url"/>
+    </div>
+    
+</iluria.if.category.has.banner>
+
+
+<!-- Produtos encontrados -->
+
+<iluria.if.product.found>     
+    <!-- Lista de produtos -->
+    <iluria.include>product-list.html</iluria.include>
+    
+    <!-- Paginação -->
+    <div class="pagination">
+        <iluria.include.pagination/>
+    </div>
+</iluria.if.product.found>
+
+<!-- Produto não encontrado -->
+<iluria.if.product.not.found>
+    <div class="featured-products-title">Nenhum produto encontrado - Veja também</div>
+    
+    <!-- Carrega uma lista aleatória de produtos -->
+    <iluria.load.product.list>
+        <searchQuery></searchQuery>
+        <pageSize>$iluria.search.products.count</pageSize>
+        <sortBy>iluria.sort.by.random</sortBy>
+        <ignoreCategory>yes</ignoreCategory>
+        <firstListing>false</firstListing>
+    </iluria.load.product.list>
+    
+    <iluria.include>product-list.html</iluria.include>
+</iluria.if.product.not.found>
+
+<!-- Scripts -->
+<iluria.include>product-list-scripts.html</iluria.include>
+
+<iluria.include>body-end.html</iluria.include>

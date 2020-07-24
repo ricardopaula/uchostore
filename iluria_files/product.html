@@ -1,0 +1,266 @@
+<iluria.include>head-begin.html</iluria.include>
+
+<!-- Carrega os detalhes do produto -->
+<iluria.load.product.details />
+
+<!-- Título do produto e nome da loja -->
+<title>$iluria.product.title - $iluria.shop.name</title>
+
+<!-- Meta tags para o Facebook e Google -->
+<iluria.product.meta.tags />
+
+<!-- Plugin de zoom da imagem do produto -->
+<iluria.v2.if.product.zoom.is.enabled>
+    <link  href="$iluria.template-assets-url/jquery.cloudzoom-3.0/cloudzoom.css" type="text/css" rel="stylesheet" />
+    <script src="$iluria.template-assets-url/jquery.cloudzoom-3.0/cloudzoom.js"></script>
+    <style>
+        .cloudzoom-ajax-loader {
+            background-image: url('$iluria.template-assets-url/spinner-6.gif');
+            background-position: center center;
+            background-repeat: no-repeat;
+            width: 36px;
+            height: 36px;
+            background-color: black;
+            border-radius: 7px;
+            padding: 10px;
+        }
+        .cloudzoom-lens {
+            cursor: pointer;
+            cursor: hand;
+            border: 1px transparent solid;
+        }
+        .cloudzoom-zoom {
+            box-shadow: 0px 0px 7px -1px rgba(0,0,0,0.4);
+            border-color: #ccc;
+        }
+    </style>
+</iluria.v2.if.product.zoom.is.enabled>
+
+<!-- Dados do produto -->
+<script type="text/javascript">
+    var productId = "$iluria.product.id";
+    var zoomImage = "$iluria.product.main.picture.850xN";
+</script>
+
+<!-- Scripts do Iluria -->
+<script type="text/javascript" src="product-scripts.js"></script>
+
+<!-- Carrega a foto principal -->
+<script type="text/javascript">
+    $(function(){
+        loadThumb("$iluria.product.main.picture.450xN", "$iluria.product.main.picture.id", "$iluria.product.id", "");
+    });
+</script>
+
+<iluria.include>head-end.html</iluria.include>
+
+<iluria.include>body-begin.html</iluria.include>
+
+<!-- Pop-up newsletter -->
+<iluria.popup/>
+
+<!-- Widget de comentários do Facebook -->
+<iluria.include>product-fb-comments-header.html</iluria.include>
+
+<!-- Barra de navegação -->
+<!-- Verifica se a barra de navegação é interna -->
+<iluria.if.breadcrumb.is.internal>
+ 	<iluria.include>breadcrumb.html</iluria.include>
+</iluria.if.breadcrumb.is.internal>
+<!-- Verifica se a barra de navegação é externa -->
+<iluria.if.breadcrumb.is.external>
+	<style>
+		#canvas-inner-body { margin-top:-20px; }
+	</style>
+</iluria.if.breadcrumb.is.external>
+
+<iluria.if.category.position.is.vertical>
+	<style>
+		.vertical-menu { 
+	        <iluria.if.vertical.category.alignment.is.right>
+				margin-left: 30px; !important; 
+	        </iluria.if.vertical.category.alignment.is.right>
+	            
+	        <iluria.if.vertical.category.alignment.is.left>
+				margin-right: 30px; !important; 
+	        </iluria.if.vertical.category.alignment.is.left>
+		}
+		#canvas-inner-body { width: 680px !important; }
+	</style>
+</iluria.if.category.position.is.vertical>
+
+
+
+<!-- Formulário para adicionar o produto ao carrinho de compras -->
+<form action=$iluria.v3.cart.url method="post" name="addToCartForm">
+    <input type="hidden" name="command" value="addToCart">
+    <input type="hidden" name="productId" value="$iluria.product.id">
+    
+    <div id="product-details-wrapper">
+	    <table width="100%" cellpadding="0" cellspacing="0" class="product-details-container">
+	        <tr valign="top">
+	            <td align="left" class="product-details-container-td-pictures">
+	                
+	                <!-- Foto principal-->
+	                <div id="big-image-container" style="position: relative;" oncontextmenu="return false;">
+	                    <iluria.v2.if.product.zoom.is.enabled>
+	                        <div onclick="showZoomImageFancybox()">
+	                            <a href="http:$iluria.product.main.picture.850xN" id="zoom01">
+	                                <img src="$iluria.product.main.picture.450xN" id="big-image" class="cloudzoom" 
+	                                data-cloudzoom="captionSource: '', zoomSizeMode: 'zoom', tintColor: 'rgba(255,255,255,0.8)', zoomPosition: '#zoom-position'" 
+	                                border=0 
+	                                alt="$iluria.product.title" title="$iluria.product.title" />
+	                            </a>
+	                        </div>
+	                    </iluria.v2.if.product.zoom.is.enabled>
+	                    <iluria.v2.if.product.zoom.is.not.enabled>
+	                        <img src="$iluria.product.main.picture.450xN" id="big-image" 
+	                        alt="$iluria.product.title" title="$iluria.product.title" />
+	                        <div id="product-image-loading-icon">
+	                            <img src="$iluria.template-assets-url/spinner-3.gif" width=32/>
+	                        </div>
+	                    </iluria.v2.if.product.zoom.is.not.enabled>
+	                </div>
+	                
+	                <!-- Miniaturas das fotos -->
+	                <div id="thumbsContainer">
+	                    <iluria.if.product.has.variations>
+	                        <iluria.show.product.pictures.variation>
+	                            <img class="thumb-picture hand-cursor" src="$iluria.product.picture.75x75"
+	                            mainPictureUrl="$iluria.product.picture.450xN" 
+	                            pictureId="$iluria.product.picture.id"
+	                            variationId="" $iluria.product.picture.style
+	                            onclick="loadThumb2(this);"/>
+	                        </iluria.show.product.pictures.variation>
+	                    </iluria.if.product.has.variations>
+	                    
+	                    <iluria.if.product.has.not.variations>
+	                        <iluria.if.product.has.more.pictures>
+	                            <iluria.show.product.pictures>
+	                                <img class="thumb-picture hand-cursor" src="$iluria.product.picture.75x75"
+	                                onclick="loadThumb('$iluria.product.picture.450xN', '$iluria.product.picture.id', '', '');">
+	                                <a style="display: none" href="$iluria.product.picture.450xN" class="iluria-product-picture-fancybox"></a>
+	                            </iluria.show.product.pictures>
+	                        </iluria.if.product.has.more.pictures>
+	                    </iluria.if.product.has.not.variations>
+	                </div>
+	                
+	                <!-- Botões curtir, pinterest e twitter -->
+	                <div class="product-social-media-buttons">
+	                    $iluria.product.share
+	                </div>
+	            </td>                
+	            <td class="product-details-container-td-description">
+	                <div style="position: relative;" class="product-details-description-wrapper">
+	                    
+	                    <!-- Imagem ampliada do zoom -->
+	                    <div id="zoom-position"></div>
+	                    
+	                    <!-- Título do produto -->
+	                    <h1 class="product-title">$iluria.product.title</h1>
+	                    
+	                    <!-- Preços e quantidade em estoque -->
+	                    <div class="product-price-container">
+	                        <div class="iluria-product-price-original" id="iluria-product-no-discount-price">$iluria.v2.product.original.price</div>
+	                        <div class="iluria-product-price" id="iluria-product-price">$iluria.v2.product.price</div>
+	                        <div class="iluria-product-price-installment" id="iluria-product-price-installment">$iluria.v2.product.installment</div>
+	                        <div class="iluria-product-price-installment" id="iluria-product-deposit-discount-price">$iluria.v2.product.deposit.discount.price</div>
+	                        <div id="iluria-product-quantity-content" class="product-description">$iluria.v2.product.quantity</div>
+	                    </div>
+	                    
+	                    <!-- Para produtos não esgotados -->
+	                    <iluria.if.product.is.not.soldout>
+	                        
+	                        <!-- Variações -->
+	                        <iluria.if.product.has.variations>
+	                            <div class="product-variations-container">
+	                                $iluria.product.variations
+	                            </div>
+	                        </iluria.if.product.has.variations>
+	                        
+	                        <!-- Botão comprar e calcular o frete -->
+	                        <div style="display: table;">
+	                        	<iluria.if.product.buy.button.is.available>
+		                            <div id="product-buy-button-container" style="float: left">
+		                                <iluria.include>product-buy-button.html</iluria.include>
+		                            </div>
+		                        </iluria.if.product.buy.button.is.available>
+	                            <div id="variation-soldout-button-container" class="iluria-product-soldout-text hand-cursor product-description" style="display:none">
+	                            Opção esgotada. Clique aqui para ser avisado <br>
+	                            quando o produto estiver disponível.
+	                       		 </div>
+	                            <iluria.if.product.calculate.shipping.button.is.enabled>
+	                                <iluria.if.product.shipping.is.not.free>
+	                                    <div id="product-shipping-link-container">
+	                                        <a id="product-shipping-link" href="#product-shipping">Calcular o frete</a>
+	                                        <iluria.show.product.shipping/>
+	                                    </div>
+	                                </iluria.if.product.shipping.is.not.free>
+	                            </iluria.if.product.calculate.shipping.button.is.enabled>
+	                        </div>
+	                    </iluria.if.product.is.not.soldout>
+	                    
+	                    <!-- Para produtos esgotados -->
+	                    <iluria.if.product.is.soldout>
+	                        <div class="iluria-product-soldout-text hand-cursor product-description" onclick="Iluria.addSoldoutNotify('$iluria.product.id')">
+	                            Produto esgotado. Clique aqui para ser avisado <br>
+	                            quando o produto estiver disponível.
+	                        </div>
+	                    </iluria.if.product.is.soldout>
+	                    
+	                    <iluria.if.product.description.position.is.right>
+		                    <!-- Descrição -->
+		                    <div class="product-description">
+		                        $iluria.product.description
+		                    </div>
+	                    </iluria.if.product.description.position.is.right>
+	                    
+	                    <!-- Tabela de medidas -->
+	                    <iluria.if.product.has.size.chart>
+	                        <div class="iluria-layout-size-chart">
+	                            <a href="$iluria.product.size.chart.url" id="iluria-size-chart-image">
+	                                Veja a tabela de medidas
+	                            </a>
+	                        </div>
+	                        <script>
+	                            $(function(){
+	                                $('#iluria-size-chart-image').fancybox();
+	                            });
+	                        </script>
+	                    </iluria.if.product.has.size.chart>
+	                   
+	                    <iluria.if.product.description.position.is.right>
+	                   		 <iluria.include>product-info.html</iluria.include>
+	                   	</iluria.if.product.description.position.is.right>
+	                </div>
+	            </td>
+	        </tr>
+	    </table>
+	    <iluria.if.product.description.position.is.bottom>
+	    	<style>
+	    		.product-description{
+	    			max-width: 100% !important;
+	    		}
+	    	</style>
+	    
+	         <!-- Descrição -->
+	         <div class="product-description" style="max-width: 100%">
+	             $iluria.product.description
+	         </div>
+	         
+	         <iluria.include>product-info.html</iluria.include>
+        </iluria.if.product.description.position.is.bottom>
+    </div>
+</form>
+
+<!-- Comentários -->
+<iluria.include>product-comments.html</iluria.include>
+
+<!-- Veja também -->
+<iluria.include>product-see-also.html</iluria.include>
+
+<iluria.if.shop.has.remarketing.tag>
+       $iluria.remarketing.tag
+</iluria.if.shop.has.remarketing.tag>
+
+<iluria.include>body-end.html</iluria.include>

@@ -1,0 +1,28 @@
+<iluria.load.page.list />
+<div class="iluria-pages-container">
+    <div class="footer-title">
+        $iluria.institutional.title
+    </div>
+    <div class="iluria-layout-pages">
+        <dl class="pages-container">
+            
+            <iluria.show.page.list>
+                <dd class="pages-item">» <a href="$iluria.page.url">$iluria.page.title</a></dd>
+            </iluria.show.page.list>
+            
+            <iluria.if.testimonials.button.position.is.footer>
+                <dd class="pages-item">
+                    » <a href="testimonials.html">Depoimentos</a>
+                </dd>
+            </iluria.if.testimonials.button.position.is.footer>
+            
+            <iluria.if.contact.button.position.is.footer>
+                <dd class="pages-item">
+                    » <a href="contact.html">$iluria.custom.contact.title</a>
+                </dd>
+            </iluria.if.contact.button.position.is.footer>
+            
+        </dl>
+    </div>
+</div>
+​

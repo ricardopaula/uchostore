@@ -1,0 +1,80 @@
+<!-- Estrutura padrão -->
+<iluria.include>head-begin.html</iluria.include>
+<iluria.include>index-meta-tags.html</iluria.include>
+<iluria.include>head-end.html</iluria.include>
+<iluria.include>body-begin.html</iluria.include>
+
+<!-- Pop-up newsletter -->
+<iluria.popup/>
+
+<!-- Produtos em destaque -->
+<center>
+    
+    <iluria.if.bestsellers.position.is.before.featured.products>
+        <iluria.include>product-bestsellers.html</iluria.include>
+    </iluria.if.bestsellers.position.is.before.featured.products>
+    
+    <!-- Carrega a lista de produtos -->
+    <iluria.load.product.list>
+        <searchQuery>$iluria.featured.products.search.tag</searchQuery>
+        <pageSize>$iluria.search.products.count</pageSize>
+        <sortBy>$iluria.sort.by.seller.choice</sortBy>
+        <isFromMainPage>true</isFromMainPage>
+    </iluria.load.product.list>
+    
+    <!-- Mostra a lista de produtos -->
+    <iluria.if.product.found>
+        
+        <iluria.if.featured.products.title.is.enabled>
+            <div class="featured-products-title">
+                $iluria.featured.products.title
+            </div>
+        </iluria.if.featured.products.title.is.enabled>
+        
+        <!-- Lista de produtos -->
+        <div class="index-product-list-container">
+            <iluria.include>product-list.html</iluria.include>
+        </div>
+        
+        <!-- Paginação -->
+        <div class="pagination">
+            <iluria.include.pagination/>
+        </div>
+    </iluria.if.product.found>
+    
+    
+    <iluria.if.bestsellers.position.is.after.featured.products>
+        <iluria.include>product-bestsellers.html</iluria.include>
+    </iluria.if.bestsellers.position.is.after.featured.products>
+</center>
+
+<!-- Scripts -->
+<iluria.include>product-list-scripts.html</iluria.include>
+
+<style>
+    .instagramwidget {
+        border-bottom-style: solid;
+        border-bottom-color: white;
+        border-bottom-width: 30px;
+    }
+    
+    .instagramusername {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Montserrat', sans-serif;
+        
+    }
+    
+</style>
+
+<div class="instagramwidget">
+    <center>
+        <h2 class="instagramusername"> Nosso instagram: @uchostore</h2>
+        <!-- SnapWidget -->
+        <iframe src="https://snapwidget.com/embed/853313" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden;  width:920px; height:460px"></iframe>   
+    </center>
+</div>
+
+<iluria.include>body-end.html</iluria.include>
+

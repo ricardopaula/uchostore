@@ -1,0 +1,65 @@
+<!-- Carrega a lista de categorias e subcategorias -->
+<iluria.load.category.list />
+<iluria.load.category.page.list/>
+
+<div class="horizontal-menu" style="visibility: hidden;">
+	<div id="categories-menu-container" class="categories-menu-container ">
+	    <div class="categories-menu">
+	        <!-- Categorias -->
+	        <ul id="jMenu">
+
+				<iluria.if.page.position.is.before.category>
+		            <iluria.show.page.list>
+	                	<li class="category-menu"><a href="$iluria.page.url" class="category-title">$iluria.page.title</a></li>
+	           		</iluria.show.page.list>
+           		</iluria.if.page.position.is.before.category>
+
+	            <iluria.show.category.list>
+	                <li class="category-menu">
+	                    <a class="fNiv category-title" href="$iluria.category.url">$iluria.category.name.escaped</a>
+	                    
+	                    <!-- Subcategorias -->
+	                    <iluria.if.category.has.subcategory>
+	                        <ul class="subcategory-menu-container">
+	                            <iluria.if.category.has.subcategory.all.enabled>
+	                                <li class="subcategory-menu"><a href="$iluria.subcategory.all.url" class="subcategory-title">$iluria.subcategory.all.text</a></li>
+	                            </iluria.if.category.has.subcategory.all.enabled>
+	                            <iluria.show.subcategory.list>
+	                                <li class="subcategory-menu"><a href="$iluria.subcategory.url" class="subcategory-title">$iluria.subcategory.name</a></li>
+	                            </iluria.show.subcategory.list>
+	                        </ul>
+	                    </iluria.if.category.has.subcategory>
+	                </li>
+	            </iluria.show.category.list>
+				
+				<iluria.if.category.has.all.enabled>
+	            	<li class="category-menu"><a href="search.html" class="category-title">$iluria.category.all.text</a></li>
+	            </iluria.if.category.has.all.enabled>
+
+	            <iluria.if.page.position.is.after.category>
+		            <iluria.show.page.list>
+	                	<li class="category-menu"><a href="$iluria.page.url" class="category-title">$iluria.page.title</a></li>
+	           		</iluria.show.page.list>
+           		</iluria.if.page.position.is.after.category>
+
+	        </ul>
+	    </div>
+	</div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#jMenu").jMenu({
+            openClick : false,
+            ulWidth : '220',
+            absoluteTop: 'auto',
+            effects : {
+                effectTypeOpen : 'show',
+                effectTypeClose : 'hide'
+            },
+            animatedText : true,
+            paddingLeft: 5
+        });
+        $(".horizontal-menu").css("visibility", "visible");
+    });
+</script>

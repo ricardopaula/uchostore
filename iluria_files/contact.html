@@ -1,0 +1,84 @@
+<iluria.include>head-begin.html</iluria.include>
+<title>$iluria.shop.name</title>
+<iluria.include>head-end.html</iluria.include>
+<iluria.include>body-begin.html</iluria.include>
+<iluria.include>page-breadcrumb.html</iluria.include>
+
+<script>
+    
+    <iluria.if.contact.status.is.empty.email>
+        alert("Por favor informe seu email.");
+    </iluria.if.contact.status.is.empty.email>
+        
+        <iluria.if.contact.status.is.empty.message>
+        alert("A mensagem não pode estar em branco.");
+    </iluria.if.contact.status.is.empty.message>
+        
+        <iluria.if.contact.status.is.message.sent.success>
+        alert("Recebemos sua mensagem com sucesso e responderemos em breve. Obrigado!");
+    </iluria.if.contact.status.is.message.sent.success>
+        
+</script>
+
+<div class="contact-container">
+    
+    <form name="contactForm" action="/clientServices.do" method="post">
+        <input type="hidden" name="command" value="readContactForm">
+        <input type="hidden" name="redirectUrl" value="/contact.html">
+        <input type="hidden" name="redirectErrorUrl" value="/contact.html">
+        <div class="contact-field-container">
+            <div>Seu nome:</div>
+            <input type="text" name="name" value="" size="35">
+        </div>
+        <div class="contact-field-container">
+            <div>Seu email:</div>
+            <input type="text" name="email" value="" size="35">
+        </div>
+        <div class="contact-field-container">
+            <div>Mensagem:</div>
+            <textarea id="message" name="message"  cols="35" rows="8"></textarea>
+        </div>
+        <div class="contact-field-container" style="display:none">
+            <div>Phone:</div>
+            <input type="text" name="phone" value="" size="35">
+        </div>
+        <div class="contatct-send-button">
+            <div onclick="sendMessage()">Enviar</div>
+        </div>
+    </form>
+</div>
+
+<div class="custom-contact-content iluria-page-content">
+    $iluria.custom.contact.content
+</div>
+
+<script>
+    function sendMessage()
+    {
+        if (!Iluria.isTestEnvironment()) {
+                        
+            if($("input[name=email]").val() == "")
+            {
+                alert("Por favor informe seu email e tente novamente.");
+                return;
+            }
+            if($("input[name=name]").val() == "")
+            {
+                alert("Por favor informe seu nome.");
+                return;
+            }
+            if($("textarea[name=message]").val() == "")
+            {
+                alert("A mensagem não pode estar em branco.");
+                return;
+            }
+            
+            document.contactForm.submit();
+        } else {
+            Iluria.showMessageForm();
+        }
+    }    
+</script>
+
+<iluria.include>body-end.html</iluria.include>
+​

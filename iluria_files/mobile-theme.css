@@ -1,0 +1,813 @@
+/*
+CSS da versão mobile do iluria
+*/
+
+
+@font-face {
+    font-family: 'ModernPictogramsNormal';
+    src: url('modernpics-webfont.eot');
+    src: url('modernpics-webfont.eot?#iefix') format('embedded-opentype'),
+        url('modernpics-webfont.woff') format('woff'),
+        url('modernpics-webfont.ttf') format('truetype'),
+        url('modernpics-webfont.svg#ModernPictogramsNormal') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'WebHostingHub-Essentials';
+    src: url('281975_0_0.eot');
+    src: url('281975_0_0.eot?#iefix') format('embedded-opentype'),
+        url('281975_0_0.woff') format('woff'),
+        url('281975_0_0.ttf') format('truetype'),
+        url('281975_0_0.svg#wf') format('svg');
+}
+
+* { outline: none }
+img { -ms-interpolation-mode: bicubic; }
+
+body {
+    background-color: $iluria.layout.body.background.color;
+    margin: 0px;
+    padding: 0px;
+}
+
+.m-body{
+    background-color: white !important;
+    min-height: 100%;
+}
+
+.m-background{
+    background-color: $iluria.layout.body.background.color !important;
+    min-height: 100%;
+}
+
+body, select { 
+    font-family: 'source sans pro', arial, sans-serif;
+    font-size: 14px; 
+    color: black; 
+}
+
+
+.il-canvas{
+    padding: 60px 10px 40px 10px;
+    background-color: $iluria.layout.mainContainer.backgroundColor;
+}
+
+.no-margin{
+    margin: 0px;
+}
+
+/**** HEADER ****/
+
+.header.mm-fixed-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.header{
+    height: 40px;
+    padding: 0px;
+    transform: none;
+    z-index: 99;
+    width: 100%;
+    background-color: white;
+}
+
+.header-internal{
+    
+}
+
+.header-internal table{
+    background-color: $iluria.layout.mobile.header.background.color;
+}
+
+.header-menu-button{
+    padding: 10px 0;
+    height: 50px;
+    width: 30px;
+    text-align: center; 
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.header-menu-button-internal{
+    text-decoration: none;
+    font-family: ModernPictogramsNormal;
+    font-weight: normal;
+    color: $iluria.layout.mobile.header.button.color;
+    font-size: 32px;
+}
+
+/**** PRODUCT-LIST ****/
+
+.products-canvas-inner{
+    padding: 10px 0px 0px 0px;
+    /*** height: 100%; ****/
+}
+
+.product-item-container-external:nth-child(even){
+    padding:  0px 0px 10px 5px;
+}
+
+.product-item-container-external:nth-child(odd){
+    padding: 0px 5px 10px 0px;
+}
+
+.product-item-container{
+    float: none;
+    background-color: $iluria.layout.product.thumb.background.color;
+    box-shadow: $iluria.layout.product.thumb.shadow.color $iluria.layout.product.thumb.box.shadow;
+    border: 1px $iluria.layout.product.thumb.border.style $iluria.layout.product.thumb.border.color;
+    border-radius: $iluria.layout.product.thumb.border.radius;
+    overflow: hidden;
+    box-sizing : border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.product-item-container-inner{
+    overflow: hidden;
+    margin: $iluria.layout.product.thumb.margin;
+}
+
+.product-item-thumb-image{
+    width: 100%; 
+    height: 0px;
+    padding-bottom: 100%;
+    background-size: cover; 
+    background-position: 50% 50%; 
+    background-repeat: no-repeat;
+    border: 1px $iluria.layout.product.thumb.image.border.style $iluria.layout.product.thumb.image.border.color;
+    border-radius: $iluria.layout.product.thumb.image.border.radius;
+    overflow: hidden;    
+}
+
+.product-thumb-soldout-image-container,
+.product-thumb-sale-image-container,
+.product-thumb-free-shipping-image-container,
+.product-thumb-new-product-image-container {
+    position: absolute; 
+    top: 0px;
+}
+
+.product-thumb-sale-image-container {
+    left: 0px;
+}
+
+.product-thumb-free-shipping-image-container,
+.product-thumb-new-product-image-container {
+    right: 0px;
+}
+
+.thumb-stamp img{
+    max-width: 30px;
+}
+
+
+/**** PAGINAÇÃO ****/
+
+.pagination {
+    margin-top: 0px !important; 
+    clear: both;
+    display: table;
+    width: 100%;
+}
+
+.iluria-pagination {
+    font-size: 14px;
+    font-weight: bold;
+    width: 100%;
+    height: 35px;
+}
+.iluria-pagination a {
+    font-family: $iluria.layout.pagination.font.family;
+    font-size: $iluria.layout.pagination.font.size;
+    font-style: $iluria.layout.pagination.font.style;
+    font-weight: $iluria.layout.pagination.font.weight;
+    text-decoration: $iluria.layout.pagination.text.decoration;
+    color: $iluria.layout.pagination.text.color;
+    background-color: $iluria.layout.pagination.background.color;
+    padding: 5px 10px;
+    border-radius: $iluria.layout.pagination.border.radius;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.iluria-pagination a[rel="current-page"] {
+    color: $iluria.layout.pagination.selected.text.color;
+    background-color: $iluria.layout.pagination.selected.background.color;
+}
+.iluria-pagination-previous {
+    text-align: left;
+    width: 90px;
+}
+.iluria-pagination-next {
+    text-align: right;
+    width: 90px;
+}
+.iluria-pagination-current-page {
+    background-color: #FF0000;
+}
+
+.iluria-pagination-pages {
+    display:none;
+}
+
+.hand-cursor {
+    cursor: pointer;
+    cursor: hand;
+}
+
+
+/**** THUMB: titulo do produto ****/
+.iluria-layout-search-product-title {
+    margin-top: 10px;
+    font-family: $iluria.layout.product.thumb.title.font.family;
+    font-size: $iluria.layout.product.thumb.title.font.size;
+    font-style: $iluria.layout.product.thumb.title.font.style;
+    font-weight: $iluria.layout.product.thumb.title.font.weight;
+    text-decoration: $iluria.layout.product.thumb.title.text.decoration;
+    
+    text-align: $iluria.layout.product.thumb.title.text.align;
+}
+.product-item-container:hover .iluria-layout-search-product-title a{
+    color: $iluria.layout.product.thumb.hover.title.text.color;
+}
+
+.iluria-layout-search-product-title a {
+    text-decoration: none;
+    color: $iluria.layout.product.thumb.title.text.color;
+}
+
+.product-thumb-image-container{
+    position: relative;
+}
+
+/**** THUMB: preco do produto ****/
+
+.product-thumb-price {
+    font-family: $iluria.layout.product.thumb.price.font.family;
+    font-size: $iluria.layout.product.thumb.price.font.size;
+    font-style: $iluria.layout.product.thumb.price.font.style;
+    font-weight: $iluria.layout.product.thumb.price.font.weight;
+    text-decoration: $iluria.layout.product.thumb.price.text.decoration;
+    color: $iluria.layout.product.thumb.price.text.color;
+    text-align: $iluria.layout.product.thumb.price.text.align;
+}
+.product-item-container:hover .product-thumb-price{
+    color: $iluria.layout.product.thumb.hover.price.text.color;
+}
+.product-thumb-original-price {
+    margin-top: 10px;
+    font-family: $iluria.layout.product.thumb.original.price.font.family;
+    font-size: $iluria.layout.product.thumb.original.price.font.size;
+    font-style: $iluria.layout.product.thumb.original.price.font.style;
+    font-weight: $iluria.layout.product.thumb.original.price.font.weight;
+    text-decoration: line-through;
+    color: $iluria.layout.product.thumb.original.price.text.color;;
+    text-align: $iluria.layout.product.thumb.original.price.text.align;
+}
+
+.product-thumb-price-installment {
+    font-family: $iluria.layout.product.thumb.installments.font.family;
+    font-size: $iluria.layout.product.thumb.installments.font.size;
+    font-style: $iluria.layout.product.thumb.installments.font.style;
+    font-weight: $iluria.layout.product.thumb.installments.font.weight;
+    text-decoration: $iluria.layout.product.thumb.installments.text.decoration;
+    color: $iluria.layout.product.thumb.installments.text.color;
+    text-align: $iluria.layout.product.thumb.installments.text.align;
+}
+
+/**** PAGINA DO PRODUTO *******/
+
+.m-product-title{
+    color: $iluria.layout.product.title.text.color;
+    font-family: $iluria.layout.product.title.font.family;
+    font-size: $iluria.layout.product.title.font.size;
+    font-weight: $iluria.layout.product.title.font.weight;
+    text-align: left;
+    text-decoration: $iluria.layout.product.title.text.decoration;
+    font-style: $iluria.layout.product.title.font.style;
+    text-align: center;
+    line-height: normal;
+}
+
+
+.m-product-price-container{
+    text-align: center;
+}
+
+.m-iluria-product-price-installment, .m-iluria-product-price-original{
+    margin-top 4px;
+}
+
+.m-iluria-product-price {
+    color: $iluria.layout.product.price.text.color;
+    font-family: $iluria.layout.product.price.font.family;
+    font-size: $iluria.layout.product.price.font.size;
+    font-weight: $iluria.layout.product.price.font.weight;
+    text-decoration: $iluria.layout.product.price.text.decoration;
+    font-style: $iluria.layout.product.price.font.style;
+}
+
+
+
+.m-iluria-product-price-installment {
+    color: $iluria.layout.product.installment.text.color;
+    font-family: $iluria.layout.product.installment.font.family;
+    font-size: $iluria.layout.product.installment.font.size;
+    font-weight: $iluria.layout.product.installment.font.weight;
+    text-decoration: $iluria.layout.product.installment.text.decoration;
+    font-style: $iluria.layout.product.installment.font.style;
+}
+.m-iluria-product-price-original {
+    text-decoration: line-through;
+    color: $iluria.layout.product.original.price.text.color;
+    font-family: $iluria.layout.product.original.price.font.family;
+    font-size: $iluria.layout.product.original.price.font.size;
+    font-weight: $iluria.layout.product.original.price.font.weight;
+    font-style: $iluria.layout.product.original.price.font.style;
+}
+
+.m-product-description {
+    max-width: 490px;
+    overflow: hidden;
+    margin-top: 20px;
+    line-height: 20px;
+    color: $iluria.layout.product.description.text.color;
+    font-family: $iluria.layout.product.description.font.family;
+    font-size: $iluria.layout.product.description.font.size;
+    font-weight: $iluria.layout.product.description.font.weight;
+    text-decoration: $iluria.layout.product.description.text.decoration;
+    font-style: $iluria.layout.product.description.font.style;
+}
+
+.m-product-description a {
+    color: $iluria.layout.product.description.link.color;
+}
+
+.product-variations-container {
+    margin-top: 20px;
+}
+.product-variations-container select {
+    width: 200px !important;
+    padding: 5px !important;
+    display: block !important;
+    margin-bottom: 10px !important;
+    border-radius: 3px !important;
+    color: $iluria.layout.product.variation.text.color;
+    font-family: $iluria.layout.product.variation.font.family;
+    font-size: $iluria.layout.product.variation.font.size;
+    font-weight: $iluria.layout.product.variation.font.weight;
+    text-decoration: $iluria.layout.product.variation.text.decoration;
+    font-style: $iluria.layout.product.variation.font.style;
+    background-color: $iluria.layout.product.variation.background.color;
+    border-color: $iluria.layout.product.variation.border.color;
+}
+
+/**** CART*******/
+
+.cart-dashed-line-border { 
+    /* border-bottom: 1px  $iluria.layout.cart.dashed.line.border.color dashed; */
+}
+
+.m-cart-item-container{
+    padding: 10px 0px 10px 0px;
+    border-top: 2px solid #DDD;
+    display: inline-block;
+    width: 100%;
+    position: relative;
+}
+
+.m-cart-product-title{
+    color: $iluria.layout.cart.product.title.text.color;
+    font-style: $iluria.layout.cart.product.title.font.style;
+    font-weight: $iluria.layout.cart.product.title.font.weight;
+    text-decoration: $iluria.layout.cart.product.title.text.decoration;
+    margin-right: 25px;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 13px;
+}
+
+.m-cart-product-variation, .m-cart-free-shipping-description{
+    font-size: 12px;
+    line-height: 15px;
+    font-style: $iluria.layout.cart.variation.font.style;
+    font-weight: $iluria.layout.cart.variation.font.weight;
+    text-decoration: $iluria.layout.cart.variation.text.decoration;
+    color: $iluria.layout.cart.variation.text.color;
+}
+
+.m-cart-product-quantity{
+    background-color: $iluria.layout.cart.field.background.color;
+    color: $iluria.layout.cart.field.text.color;
+    border: 1px  $iluria.layout.cart.field.border.color solid;
+    border-radius: $iluria.layout.cart.field.border.radius;
+    box-shadow: 0px 0px 6px -1px $iluria.layout.cart.field.shadow.color;
+    width: 30px;
+}
+
+.iluria-cart-comment-description{
+    font-style: $iluria.layout.cart.variation.font.style;
+    font-weight: $iluria.layout.cart.variation.font.weight;
+    text-decoration: $iluria.layout.cart.variation.text.decoration;
+    color: $iluria.layout.cart.variation.text.color;
+}
+
+.productTitle{
+    color: $iluria.layout.cart.product.title.text.color;
+}
+
+
+.m-cart-product-unit-price {
+    color: $iluria.layout.cart.product.title.text.color;
+}
+
+.m-cart-product-total-price{
+    color: $iluria.layout.cart.product.total.value.text.color;
+}
+
+.m-cart-remove-product{
+    background-color: white;
+    background-image: url('/webCommons/img/icons/circle_close.png');
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 5px;
+    right: 0;
+}
+
+.m-cart-products-sub-total{
+    color: $iluria.layout.cart.fotter.text.color;
+}
+
+.m-iluria-cart-mini-button, a#update-quantity-button {
+    padding-top: 5px;
+    font-family: $iluria.layout.cart.link.font.family;
+    font-size: 12px;
+    font-weight: $iluria.layout.cart.link.font.weight;
+    color: $iluria.layout.cart.link.text.color;
+    text-decoration: none;
+    cursor: pointer;
+    cursor: hand;
+}
+.m-iluria-cart-mini-button a, a#update-quantity-button {
+    color: $iluria.layout.cart.link.text.color;
+    text-decoration: none;
+}
+
+.iluria-cart-comment-description {
+    padding: 0px 0px;
+    padding-top: 10px;
+    line-height: 15px;
+}
+
+.shipping-label{
+    color: $iluria.layout.cart.shipping.text.color;
+}
+
+.cartFrete {
+    color: $iluria.layout.cart.shipping.text.color;
+    font-family: Source Sans Pro;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+    border: 3px transparent solid;
+}
+
+.iluria-cart-button {
+    font-family: $iluria.layout.cart.button.font.family;
+    font-size: 11px;
+    font-weight: $iluria.layout.cart.button.font.weight;
+    background-color: $iluria.layout.cart.button.background.color;
+    color: $iluria.layout.cart.button.text.color;
+    border-radius: $iluria.layout.cart.button.border.radius;
+    box-shadow: 0 1px 2px $iluria.layout.cart.button.shadow.color;
+}
+
+.button {
+    width: 140px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    cursor: hand;
+    cursor: pointer;
+}
+
+.cart-container input[type="text"], .cart-container input[type="email"], .cart-container input[type="tel"], .cart-container textarea, .cart-container select, .cart-container option  {
+    background-color: $iluria.layout.cart.field.background.color;
+    color: $iluria.layout.cart.field.text.color;
+    border: 1px  $iluria.layout.cart.field.border.color solid;
+    border-radius: $iluria.layout.cart.field.border.radius;
+    box-shadow: 0px 0px 6px -1px $iluria.layout.cart.field.shadow.color;
+}
+
+.iluria-cart-client-info input[type="text"], .iluria-cart-client-info input[type="email"] {
+    width: 100%;
+}
+
+.m-iluria-cart-title{
+    color: $iluria.layout.cart.title.text.color;
+    display: block;
+    font-family: $iluria.layout.cart.title.font.family;
+    font-size: $iluria.layout.cart.title.font.size;
+    font-style: $iluria.layout.cart.title.font.style;
+    font-weight: $iluria.layout.cart.title.font.weight;
+    margin-top: 10px;
+    text-decoration: $iluria.layout.cart.title.text.decoration;
+}
+
+.buy-button-text {
+    margin-top: 20px;
+    width: 175px !important;
+    font-family: $iluria.layout.buy.button.font.family;
+    font-size: $iluria.layout.buy.button.font.size;
+    font-style: $iluria.layout.buy.button.font.style;
+    font-weight: $iluria.layout.buy.button.font.weight;
+    text-decoration: $iluria.layout.buy.button.text.decoration;
+    color: $iluria.layout.buy.button.text.color;
+    background-color: $iluria.layout.buy.button.background.color;
+    
+}
+.buy-button-text span {
+    font-family: ModernPictogramsNormal;
+    font-size: 17px;
+}
+
+.iluria-cart-title {
+    color: $iluria.layout.cart.title.text.color;
+    display: block;
+    font-family: $iluria.layout.cart.title.font.family;
+    font-size: $iluria.layout.cart.title.font.size;
+    font-style: $iluria.layout.cart.title.font.style;
+    font-weight: $iluria.layout.cart.title.font.weight;
+    margin-top: 10px;
+    text-decoration: $iluria.layout.cart.title.text.decoration;
+}
+
+.m-cart-input-label {
+    margin-top: 10px;
+}
+
+/***** BUSCA ****/
+.m-search-bar{
+    float: left; 
+    border-radius: $iluria.layout.search.box.border.radius; 
+    padding: 0px 6px 1px 6px;
+    background-color: #d9d8d8; /* para navegadores que não suportam rgba */
+    border-color: #e7eaec; /* para navegadores que não suportam rgba */
+    border-color: $iluria.layout.search.box.border.color;
+    border-width: $iluria.layout.search.box.border.width;
+    border-style: $iluria.layout.search.box.border.style;
+    color: black;
+}
+
+.m-search-bar input {
+    background-color: #ffffff;
+    border: none;
+    width: 200px;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.m-search-bar a, .iluria-layout-search-bar a:hover {
+    text-decoration: none;
+    font-family: ModernPictogramsNormal;
+    font-size: 25px;
+}
+
+.m-search-bar-button {
+    color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.search-bar-button {
+    color: rgba(0, 0, 0, 0.8) !important;
+    vertical-align: middle;
+}
+
+/****** Pedidos do cliente ******/
+
+.order-history-container{
+    margin-bottom: 10px;
+    border: 1px solid $iluria.layout.cart.button.background.color;
+    display: inline-table;
+    width: 100%;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.order-history-left{
+    display: table-cell;
+    padding: 3px;
+}
+
+.order-history-right{
+    width: 30px;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+    background-color: $iluria.layout.cart.button.background.color;
+    color: $iluria.layout.cart.button.text.color;;
+    cursor: hand;
+    cursor: pointer;
+}
+
+
+
+/****** LOGIN ******/
+
+.login-field-container {
+    margin: 0px 0px 20px;
+}
+
+.login-title, .contact-title {
+    display: block;
+    color: rgb(142, 26, 10);
+    font-size: 29px;
+    font-weight: normal;
+    font-family: Rokkitt;
+    font-style: normal;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+
+.login-title,
+.contact-title {
+    display: block;
+    color: $iluria.layout.login.title.text.color;
+    font-size: $iluria.layout.login.title.font.size;
+    font-weight: $iluria.layout.login.title.font.weight;
+    font-family: $iluria.layout.login.title.font.family;
+    font-style: $iluria.layout.login.title.font.style;
+    text-decoration: $iluria.layout.login.title.text.decoration;
+    margin-top: 10px;
+}
+
+.login-text {
+    display:block;
+    padding: 20px 0px;
+    color: $iluria.layout.login.text.text.color;
+    text-decoration: $iluria.layout.login.text.text.decoration;
+    font-family: $iluria.layout.login.text.font.family;
+    font-size: $iluria.layout.login.text.font.size;
+    font-style: $iluria.layout.login.text.font.style;
+    font-weight: $iluria.layout.login.text.font.weight;
+}
+
+.contact-container input[type="text"], .contact-container textarea,  
+.login-container input[type="text"], .login-container input[type="password"], .login-container input[type="email"] {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid $iluria.layout.login.field.border.color;
+    box-sizing : border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    background: $iluria.layout.login.field.background.color;
+    outline: none;
+    background-color: $iluria.layout.login.field.background.color;
+    resize: none;
+    font-family: $iluria.layout.login.field.font.family;
+    font-size: $iluria.layout.login.field.font.size;
+    color: $iluria.layout.login.field.text.color;
+    border-radius: $iluria.layout.login.field.border.radius;
+    box-shadow: 0px 0px 6px -1px $iluria.layout.login.field.shadow.color;
+}
+
+.login-container input[type="text"]:focus, .login-container input[type="password"]:focus {
+    box-shadow: 0px 0px 6px -1px $iluria.layout.login.field.shadow.hover.color;
+    border: 1px $iluria.layout.login.field.border.hover.color solid;
+    
+}
+
+.login-button,
+.contatct-send-button {
+    width: 200px;
+    text-align: center;
+    line-height: 35px;
+    cursor: hand;
+    cursor: pointer;
+    color: $iluria.layout.login.button.text.color;
+    font-family: $iluria.layout.login.button.font.family;
+    font-size: $iluria.layout.login.button.font.size;
+    font-weight: $iluria.layout.login.button.font.weight;
+    background-color: $iluria.layout.login.button.background.color;
+    border-radius: $iluria.layout.login.button.border.radius;
+    box-shadow: 0 1px 2px $iluria.layout.login.button.shadow.color;
+}
+
+.login-recover-password {
+    color: $iluria.layout.login.link.text.color;
+    font-family: $iluria.layout.login.link.font.family;
+    font-size: $iluria.layout.login.link.font.size;
+    font-weight: $iluria.layout.login.link.font.weight;
+    line-height: 35px;
+    cursor: hand;
+    cursor: pointer;
+    margin-left: 20px;
+    float: left;
+}
+
+
+
+.featured-products-title,
+.iluria-testimonials-title,
+.sub-header {
+    color: $iluria.layout.featured.products.text.color;
+    font-family: $iluria.layout.featured.products.font.family;
+    font-size: $iluria.layout.featured.products.font.size;
+    font-weight: $iluria.layout.featured.products.font.weight;
+    font-style: $iluria.layout.featured.products.font.style;
+    text-decoration: $iluria.layout.featured.products.text.decoration;
+    background-color: $iluria.layout.featured.products.background.color;
+    text-align:$iluria.layout.featured.products.text.align;
+    border-radius: $iluria.layout.featured.products.radius;
+}
+
+.featured-products-title,
+.iluria-testimonials-title {
+    margin-bottom: 20px;
+}
+
+.featured-products-title{
+    width: 100%;
+}
+
+.copyright, .iluria-copyright, .iluria-copyright a, .iluria-copyright a:visited, .iluria-copyright a:hover{
+    font-family: $iluria.layout.menu.pages.font.family;
+    font-size: 12px ;
+    text-decoration: none ;
+    color: $iluria.layout.menu.pages.text.color ;
+    text-align: center;
+}
+
+#footer {
+    background-color: $iluria.layout.container.footer.background.color;
+}
+
+
+
+/* teste */
+
+
+
+/* fim teste */
+
+
+.pp_pic_holder {
+    top: 120px !important;    
+}
+
+.pp_top, .pp_bottom {
+    display: none !important;    
+}
+
+.pp_details clearfix {
+    margin: 0 !important;
+}
+
+.iluria-soldout-notify {
+    background-color: #FFF !important;
+    margin-left: 0 !important;
+    border: 0 !important;
+}
+
+#iluria-view-container {
+    width: 290px !important;
+}
+
+.iluria-soldout-notify-button-container {
+    padding: 10px 57px 0 0 !important;
+}
+
+.mm-menu > .mm-panel.mm-opened {
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+/* cor do texto do menu lateral */
+.mm-list > li > a, .mm-list > li > span {
+    color: rgba(0, 0, 0, 0.8);
+}
+
+/* cor do texto de retorno do menu lateral */
+.mm-menu .mm-list > li > a.mm-subclose {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* cor de fundo do menu lateral */
+.mm-menu { 
+    background: #ffc3c9;
+}
+
+/* borda entre as linhas do menu lateral */
+.mm-menu .mm-list > li:after {
+    color: rgba(0, 0, 0, 0.15);
+}

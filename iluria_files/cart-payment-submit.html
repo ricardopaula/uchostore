@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        
+        <!-- jQuery -->
+        <script type='text/JavaScript' src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        
+        <style>
+            #background-spinner {
+                background-color: rgba(0,0,0,0.7);
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                position: fixed;
+            }
+        </style>
+        
+        <script>
+            function centerSpinner() {
+                var spinnerHeight = ($(window).height() / 2) - $('#spinner').height();
+                $('#spinner').css('margin-top', spinnerHeight);
+            }
+        </script>
+        <script>
+            $(function() {
+                try {
+                    centerSpinner();
+                    setTimeout(centerSpinner,500);
+                } catch(e) { console.log(e); }
+            });
+        </script>
+    </head>
+    <body>
+        <div id="background-spinner"><center><img id="spinner" src="$iluria.template-assets-url/spinner-8.gif"></center></div>
+
+		<!-- Este arquivo submete um form com os dados da compra para o meio de pagamento -->        
+        <iluria.cart.payment.submit/>
+    </body>
+</html>
+​
